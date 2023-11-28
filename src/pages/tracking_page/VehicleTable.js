@@ -3,6 +3,7 @@ import React from 'react';
 
 const VehicleTable = () => {
     const tableData = JSON.parse(sessionStorage.getItem('dashboardData'))
+    const columns = "empytty";
     return (
         <div>
             <AdvanceTableWrapper
