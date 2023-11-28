@@ -1,0 +1,947 @@
+[
+    {
+        "vehicleCompany_name": "Madras Cabs",
+        "vehicleCompany_id": 1,
+        "schools": [
+            {
+                "school_name": "Sishya",
+                "school_id": 1,
+                "vehicles": [
+                    {
+                        "id": 1962,
+                        "header": "",
+                        "vendor_id": "",
+                        "firmware_version": "",
+                        "packet_type": "",
+                        "alert_id": "",
+                        "packet_status": true,
+                        "imei": 15,
+                        "vehicle_reg": "TN14BA9902",
+                        "gnss_fix": true,
+                        "date": "2023-11-06",
+                        "time": "13:57:44",
+                        "latitude": 12.8167,
+                        "latitude_direction": true,
+                        "longitude": 77.6974,
+                        "longitude_direction": true,
+                        "speed": 15.0,
+                        "course": 16.0,
+                        "num_satellites": "17",
+                        "altitude": 18.0,
+                        "pdop": 19.0,
+                        "hdop": 20.0,
+                        "network_op_name": "21",
+                        "ignition": true,
+                        "main_power_status": true,
+                        "main_input_v": 24.0,
+                        "internal_batt_V": 25.0,
+                        "emergency_status": true,
+                        "tamper_alert": true,
+                        "gsm_signal_strength": "28",
+                        "mmc": "29",
+                        "mnc": "30",
+                        "lac": "31",
+                        "cell_id": "32",
+                        "nmr": "33",
+                        "digital_input_status": "34",
+                        "digital_output_status": "35",
+                        "frame_number": 36,
+                        "checksum": "37",
+                        "raw_data": "GPS,ELENA,1.0.2,NR,01,L,865263042351922,TN14BA9902,1,06112023,135744,12.8167,N,77.6974,E,15,16,17,18,19,20,21,1,1,24,25,1,C,28,29,30,31,32,33,34,35,36,37",
+                        "parked": false
+                    }
+                ]
+            },
+            {
+                "school_name": "Chennai Public School",
+                "school_id": 4,
+                "vehicles": []
+            }
+        ]
+    },
+    {
+        "vehicleCompany_name": "Bangalore Cabs",
+        "vehicleCompany_id": 2,
+        "schools": [
+            {
+                "school_name": "Vidya Mandir",
+                "school_id": 2,
+                "vehicles": [
+                    {
+                        "id": 1975,
+                        "header": "",
+                        "vendor_id": "",
+                        "firmware_version": "",
+                        "packet_type": "",
+                        "alert_id": "",
+                        "packet_status": true,
+                        "imei": 106,
+                        "vehicle_reg": "KA01AB9993",
+                        "gnss_fix": true,
+                        "date": "2023-11-06",
+                        "time": "13:59:45",
+                        "latitude": 12.9492,
+                        "latitude_direction": true,
+                        "longitude": 80.2547,
+                        "longitude_direction": true,
+                        "speed": 15.0,
+                        "course": 16.0,
+                        "num_satellites": "17",
+                        "altitude": 18.0,
+                        "pdop": 19.0,
+                        "hdop": 20.0,
+                        "network_op_name": "21",
+                        "ignition": true,
+                        "main_power_status": true,
+                        "main_input_v": 24.0,
+                        "internal_batt_V": 25.0,
+                        "emergency_status": true,
+                        "tamper_alert": true,
+                        "gsm_signal_strength": "28",
+                        "mmc": "29",
+                        "mnc": "30",
+                        "lac": "31",
+                        "cell_id": "32",
+                        "nmr": "33",
+                        "digital_input_status": "34",
+                        "digital_output_status": "35",
+                        "frame_number": 36,
+                        "checksum": "37",
+                        "raw_data": "GPS,ELENA,1.0.2,NR,01,L,860987057785542,KA01AB9993,1,06112023,135945,12.9492,N,80.2547,E,15,16,17,18,19,20,21,1,1,24,25,1,C,28,29,30,31,32,33,34,35,36,37",
+                        "parked": false
+                    }
+                ]
+            },
+            {
+                "school_name": "Kendriya Vidyalaya",
+                "school_id": 3,
+                "vehicles": []
+            }
+        ]
+    },
+    {
+        "vehicleCompany_name": "India Cabs",
+        "vehicleCompany_id": 3,
+        "schools": []
+    }
+],
+
+
+[
+    {
+        "vehicle_reg_num": "TN14B9909",
+        "device": "869523057984883",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": "Driver 1",
+        "phone": "8656896365"
+    },
+    {
+        "vehicle_reg_num": "KA09A0989",
+        "device": "869523052804052",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": "Driver 2",
+        "phone": "6365698751"
+    },
+    {
+        "vehicle_reg_num": "TN14BA9900",
+        "device": "866600040477358",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9901",
+        "device": "865291048612641",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9902",
+        "device": "865263042351922",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9903",
+        "device": "865263042351831",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9904",
+        "device": "860987057839273",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9905",
+        "device": "860987057834555",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9906",
+        "device": "860987057785653",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9907",
+        "device": "860987057785652",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9908",
+        "device": "860987057785651",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9909",
+        "device": "860987057785650",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9910",
+        "device": "860987057785649",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9911",
+        "device": "860987057785648",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9912",
+        "device": "860987057785647",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9913",
+        "device": "860987057785643",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9914",
+        "device": "860987057785642",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9915",
+        "device": "860987057785641",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9916",
+        "device": "860987057785640",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9917",
+        "device": "860987057785639",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9918",
+        "device": "860987057785638",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9919",
+        "device": "860987057785636",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9920",
+        "device": "860987057785635",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9921",
+        "device": "860987057785633",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9922",
+        "device": "860987057785631",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9923",
+        "device": "860987057785630",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9924",
+        "device": "860987057785629",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9925",
+        "device": "860987057785628",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9926",
+        "device": "860987057785627",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9927",
+        "device": "860987057785626",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9928",
+        "device": "860987057785625",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9929",
+        "device": "860987057785624",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9930",
+        "device": "860987057785623",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9931",
+        "device": "860987057785620",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9932",
+        "device": "860987057785619",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9933",
+        "device": "860987057785617",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9934",
+        "device": "860987057785615",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9935",
+        "device": "860987057785614",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9936",
+        "device": "860987057785613",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9937",
+        "device": "860987057785612",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9938",
+        "device": "860987057785611",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9939",
+        "device": "860987057785610",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9940",
+        "device": "860987057785609",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9941",
+        "device": "860987057785608",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9942",
+        "device": "860987057785606",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9943",
+        "device": "860987057785605",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9944",
+        "device": "860987057785604",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9945",
+        "device": "860987057785602",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9946",
+        "device": "860987057785600",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9947",
+        "device": "860987057785599",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9948",
+        "device": "860987057785598",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "TN14BA9949",
+        "device": "860987057785597",
+        "vehicle_company": "Madras Cabs",
+        "school": "Sishya",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9950",
+        "device": "860987057785596",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9951",
+        "device": "860987057785595",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9952",
+        "device": "860987057785593",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9953",
+        "device": "860987057785592",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9954",
+        "device": "860987057785591",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9955",
+        "device": "860987057785590",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9956",
+        "device": "860987057785589",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9957",
+        "device": "860987057785587",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9958",
+        "device": "860987057785586",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9959",
+        "device": "860987057785585",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9960",
+        "device": "860987057785584",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9961",
+        "device": "860987057785583",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9962",
+        "device": "860987057785582",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9963",
+        "device": "860987057785581",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9964",
+        "device": "860987057785580",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9965",
+        "device": "860987057785579",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9966",
+        "device": "860987057785577",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9967",
+        "device": "860987057785576",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9968",
+        "device": "860987057785575",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9969",
+        "device": "860987057785574",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9970",
+        "device": "860987057785573",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9971",
+        "device": "860987057785571",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9972",
+        "device": "860987057785570",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9973",
+        "device": "860987057785569",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9974",
+        "device": "860987057785568",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9975",
+        "device": "860987057785566",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9976",
+        "device": "860987057785563",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9977",
+        "device": "860987057785562",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9978",
+        "device": "860987057785560",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9979",
+        "device": "860987057785559",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9980",
+        "device": "860987057785558",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9981",
+        "device": "860987057785557",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9982",
+        "device": "860987057785556",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9983",
+        "device": "860987057785555",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9984",
+        "device": "860987057785554",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9985",
+        "device": "860987057785552",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9986",
+        "device": "860987057785551",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9987",
+        "device": "860987057785550",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9988",
+        "device": "860987057785549",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9989",
+        "device": "860987057785548",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9990",
+        "device": "860987057785546",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9991",
+        "device": "860987057785544",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9992",
+        "device": "860987057785543",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9994",
+        "device": "860987054451593",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9995",
+        "device": "860987000085562",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9996",
+        "device": null,
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9997",
+        "device": null,
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9998",
+        "device": null,
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9999",
+        "device": "869523051922319",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    },
+    {
+        "vehicle_reg_num": "KA01AB9993",
+        "device": "860987057785542",
+        "vehicle_company": "Bangalore Cabs",
+        "school": "Vidya Mandir",
+        "driver": null,
+        "phone": null
+    }
+]
