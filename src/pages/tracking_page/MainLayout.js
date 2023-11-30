@@ -30,7 +30,7 @@ const MainLayout = () => {
   }, [pathname]);
 
   return (
-    <div className={'container-fluid'}>
+    <div className={'container-fluid '}>
       <NavbarVertical />
       {/* <ProductProvider> */}
       {/* <CourseProvider> */}
