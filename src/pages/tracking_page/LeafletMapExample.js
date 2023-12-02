@@ -10,7 +10,7 @@ import AppContext from 'context/Context';
 import { toast } from 'react-toastify';
 import 'leaflet-rotatedmarker';
 
-const LeafletMapExample = () => {
+const LeafletMapExample = ({ Location }) => {
   function LayerComponent() {
     const map = useMap();
     const { config } = useContext(AppContext);
@@ -75,6 +75,12 @@ const LeafletMapExample = () => {
             if (sch.id == currentVehicle.school) school = sch.name;
           });
         });
+
+        useEffect(() => {
+          return () => {
+            console.log(Location);
+          };
+        }, [Location]);
 
         let ws = new WebSocket(
           `wss://sbmslive.elenageosys.com/?imei=${imei}&school=${school}`

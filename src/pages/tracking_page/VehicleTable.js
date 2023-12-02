@@ -5,7 +5,7 @@ import AdvanceTable from 'components/common/advance-table/AdvanceTable';
 import tableLocationMarker from 'assets/img/icons/map-marker.png';
 import React from 'react';
 
-const VehicleTable = () => {
+const VehicleTable = ({ onTrackClick }) => {
   const responseData = JSON.parse(sessionStorage.getItem('dashboardData'));
 
   const tableData = responseData.reduce((acc, curr) => {
@@ -21,6 +21,10 @@ const VehicleTable = () => {
     });
     return acc;
   }, []);
+
+  const handleTrackClick = (latitude, longitude) => {
+    onTrackClick(latitude, longitude);
+  };
 
   const columns = [
     {
@@ -62,10 +66,13 @@ const VehicleTable = () => {
       Cell: rowData => {
         const { latitude, longitude } = rowData.row.original;
         return (
-          <div className="btn btn-primary btn-sm">
+          <div
+            className="btn btn-primary btn-sm"
+            onClick={() => handleTrackClick(latitude, longitude)}
+          >
             <img
               src={tableLocationMarker}
-              alt="marker" 
+              alt="marker"
               height={15}
               width={15}
             />

@@ -11,8 +11,6 @@ import CustomersTableHeader from './CustomersTableHeader';
 import AdvanceTablePagination from 'components/common/advance-table/AdvanceTablePagination';
 import AdvanceTable from 'components/common/advance-table/AdvanceTable';
 
-
-
 const Customers = () => {
   const [customers, setCustomers] = useState([]);
   useEffect(() => {
@@ -25,119 +23,119 @@ const Customers = () => {
       .then(data => setCustomers(data))
       .catch(err => console.error(err));
   }, []);
-  
-const columns = [
-  {
-    accessor: 'name',
-    Header: 'Vehicle Number',
-    headerProps: { className: 'pe-1' },
-    cellProps: {
-      className: 'py-2'
+
+  const columns = [
+    {
+      accessor: 'name',
+      Header: 'Vehicle Number',
+      headerProps: { className: 'pe-1' },
+      cellProps: {
+        className: 'py-2'
+      },
+      Cell: rowData => {
+        const { vehicle_reg_num } = rowData.row.original;
+        return (
+          <Link to="/e-commerce/customer-details">
+            <div className="flex-1">
+              <h5 className="mb-0 fs--1">{vehicle_reg_num}</h5>
+            </div>
+          </Link>
+        );
+      }
     },
-    Cell: rowData => {
-      const { vehicle_reg_num } = rowData.row.original;
-      return (
-        <Link to="/e-commerce/customer-details">
-          <div className="flex-1">
-            <h5 className="mb-0 fs--1">{vehicle_reg_num}</h5>
-          </div>
-        </Link>
-      );
+    {
+      accessor: 'id',
+      Header: 'Device ID',
+      Cell: rowData => {
+        const { device } = rowData.row.original;
+        return (
+          <Link to="/e-commerce/customer-details">
+            <div className="flex-1">
+              <h5 className="mb-0 fs--1">{device}</h5>
+            </div>
+          </Link>
+        );
+      }
+    },
+    {
+      accessor: 'owner',
+      Header: 'Vehicle Owner',
+      Cell: rowData => {
+        const { vehicle_company } = rowData.row.original;
+        return (
+          <Link to="/e-commerce/customer-details">
+            <div className="flex-1">
+              <h5 className="mb-0 fs--1">{vehicle_company}</h5>
+            </div>
+          </Link>
+        );
+      }
+    },
+    {
+      accessor: 'school',
+      Header: 'School Name',
+      Cell: rowData => {
+        const { school } = rowData.row.original;
+        return (
+          <Link to="/e-commerce/customer-details">
+            <div className="flex-1">
+              <h5 className="mb-0 fs--1">{school}</h5>
+            </div>
+          </Link>
+        );
+      }
+    },
+    {
+      accessor: 'driver',
+      Header: 'Driver Name',
+      Cell: rowData => {
+        const { driver } = rowData.row.original;
+        return (
+          <Link to="/e-commerce/customer-details">
+            <div className="flex-1">
+              <h5 className="mb-0 fs--1">{driver}</h5>
+            </div>
+          </Link>
+        );
+      }
+    },
+    {
+      accessor: 'phone',
+      Header: 'Phone',
+      Cell: rowData => {
+        const { phone } = rowData.row.original;
+        return <a href={`tel:${phone}`}>{phone}</a>;
+      }
     }
-  },
-  {
-    accessor: 'id',
-    Header: 'Device ID',
-    Cell: rowData => {
-      const { device } = rowData.row.original;
-      return (
-        <Link to="/e-commerce/customer-details">
-          <div className="flex-1">
-            <h5 className="mb-0 fs--1">{device}</h5>
-          </div>
-        </Link>
-      );
-    }
-  },
-  {
-    accessor: 'owner',
-    Header: 'Vehicle Owner',
-    Cell: rowData => {
-      const { vehicle_company } = rowData.row.original;
-      return (
-        <Link to="/e-commerce/customer-details">
-          <div className="flex-1">
-            <h5 className="mb-0 fs--1">{vehicle_company}</h5>
-          </div>
-        </Link>
-      );
-    }
-  },
-  {
-    accessor: 'school',
-    Header: 'School Name',
-    Cell: rowData => {
-      const { school } = rowData.row.original;
-      return (
-        <Link to="/e-commerce/customer-details">
-          <div className="flex-1">
-            <h5 className="mb-0 fs--1">{school}</h5>
-          </div>
-        </Link>
-      );
-    }
-  },
-  {
-    accessor: 'driver',
-    Header: 'Driver Name',
-    Cell: rowData => {
-      const { driver } = rowData.row.original;
-      return (
-        <Link to="/e-commerce/customer-details">
-          <div className="flex-1">
-            <h5 className="mb-0 fs--1">{driver}</h5>
-          </div>
-        </Link>
-      );
-    }
-  },
-  {
-    accessor: 'phone',
-    Header: 'Phone',
-    Cell: rowData => {
-      const { phone } = rowData.row.original;
-      return <a href={`tel:${phone}`}>{phone}</a>;
-    }
-  }
-  // {
-  //   accessor: 'name',
-  //   Header: 'School',
-  //   headerProps: { style: { minWidth: '200px' }, className: 'ps-5' },
-  //   cellProps: { className: 'ps-5' }
-  // }
-  // {
-  //   accessor: 'joined',
-  //   Header: 'Joined'
-  // },
-  // {
-  //   accessor: 'none',
-  //   Header: '',
-  //   disableSortBy: true,
-  //   cellProps: {
-  //     className: 'text-end'
-  //   },
-  //   Cell: () => {
-  //     return (
-  //       <CardDropdown>
-  //         <div className="py-2">
-  //           <Dropdown.Item href="#!">Edit</Dropdown.Item>
-  //           <Dropdown.Item href="#!">Delete</Dropdown.Item>
-  //         </div>
-  //       </CardDropdown>
-  //     );
-  //   }
-  // }
-];
+    // {
+    //   accessor: 'name',
+    //   Header: 'School',
+    //   headerProps: { style: { minWidth: '200px' }, className: 'ps-5' },
+    //   cellProps: { className: 'ps-5' }
+    // }
+    // {
+    //   accessor: 'joined',
+    //   Header: 'Joined'
+    // },
+    // {
+    //   accessor: 'none',
+    //   Header: '',
+    //   disableSortBy: true,
+    //   cellProps: {
+    //     className: 'text-end'
+    //   },
+    //   Cell: () => {
+    //     return (
+    //       <CardDropdown>
+    //         <div className="py-2">
+    //           <Dropdown.Item href="#!">Edit</Dropdown.Item>
+    //           <Dropdown.Item href="#!">Delete</Dropdown.Item>
+    //         </div>
+    //       </CardDropdown>
+    //     );
+    //   }
+    // }
+  ];
 
   return (
     <AdvanceTableWrapper
