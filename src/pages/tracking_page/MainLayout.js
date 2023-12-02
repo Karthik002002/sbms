@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { Card } from 'react-bootstrap';
@@ -11,6 +11,7 @@ import VehicleTable from './VehicleTable';
 const MainLayout = () => {
   const { hash, pathname } = useLocation();
   const isKanban = pathname.includes('kanban');
+  const [currentLocation, setCurrentLocation] = useState({ latitude: 0, longitude: 0 })
   // const isChat = pathname.includes('chat');
 
   useEffect(() => {
@@ -29,6 +30,10 @@ const MainLayout = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
+  const handleTrackClick = (latitude, longitude) => {
+    setCurrentLocation({ latitude, longitude });
+  };
+
   return (
     <div className={'container-fluid '}>
       <NavbarVertical />
@@ -36,7 +41,7 @@ const MainLayout = () => {
       {/* <CourseProvider> */}
 
       <Card className="mb-3">
-        <VehicleTable/>
+        <VehicleTable onTrackClick={handleTrackClick}/>
       </Card>
       <div className={classNames('content', { 'pb-0': isKanban })}>
         <div className="mt-5">

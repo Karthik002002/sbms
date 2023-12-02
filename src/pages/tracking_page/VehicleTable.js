@@ -2,7 +2,7 @@ import AdvanceTableWrapper from 'components/common/advance-table/AdvanceTableWra
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AdvanceTable from 'components/common/advance-table/AdvanceTable';
-import mapMarker from 'assets/img/icons/map-marker.png'
+import tableLocationMarker from 'assets/img/icons/map-marker.png';
 import React from 'react';
 
 const VehicleTable = () => {
@@ -22,7 +22,6 @@ const VehicleTable = () => {
     return acc;
   }, []);
 
-
   const columns = [
     {
       accessor: 'vehicle_reg_num',
@@ -33,7 +32,7 @@ const VehicleTable = () => {
       },
       Cell: rowData => {
         return (
-            <div className="flex-1">
+          <div className="flex-1">
             <h5 className="mb-0 fs--1">{rowData.value}</h5>
           </div>
         );
@@ -63,10 +62,13 @@ const VehicleTable = () => {
       Cell: rowData => {
         const { latitude, longitude } = rowData.row.original;
         return (
-          <div
-            className="btn btn-primary btn-sm"
-          >
-            <img src={mapMarker} alt="marker" height={15} width={15} />
+          <div className="btn btn-primary btn-sm">
+            <img
+              src={tableLocationMarker}
+              alt="marker" 
+              height={15}
+              width={15}
+            />
           </div>
         );
       }
@@ -75,12 +77,9 @@ const VehicleTable = () => {
 
   return (
     <div>
-      <AdvanceTableWrapper
-        columns={columns}
-        data={tableData}
-      >
+      <AdvanceTableWrapper columns={columns} data={tableData}>
         <Card.Body>
-        <AdvanceTable
+          <AdvanceTable
             table
             headerClassName="bg-200 text-900 text-nowrap align-middle"
             rowClassName="align-middle white-space-nowrap"
@@ -90,7 +89,7 @@ const VehicleTable = () => {
               className: 'fs--1 mb-0 overflow-hidden'
             }}
           />
-          </Card.Body>
+        </Card.Body>
       </AdvanceTableWrapper>
     </div>
   );
