@@ -12,7 +12,7 @@ import AppContext from 'context/Context';
 
 const PreviewCode = () => {
   return (
-    <Row className="d-inline-block">
+    <Row className="d-inline-block ">
       <Col>
         {/* <Nav variant="pills" className="nav-pills-falcon m-0">
           <Nav.Item>
@@ -50,11 +50,11 @@ const FalconComponentCardHeader = ({
           'align-items-end ': children
         })}
       >
-        <Col>
+        <Col > 
           {title && (
-            <Flex>
+            <Flex className={'justify-content-center'}>
               <h5
-                className="mb-0 hover-actions-trigger text-truncate text-nowrap"
+                className=" justify-content-center mb-0 hover-actions-trigger text-truncate text-nowrap "
                 id={camelize(title)}
               >
                 {isRTL ? (

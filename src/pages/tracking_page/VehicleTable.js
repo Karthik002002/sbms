@@ -67,7 +67,7 @@ const VehicleTable = ({ onTrackClick }) => {
         const { latitude, longitude } = rowData.row.original;
         return (
           <div
-            className="btn btn-primary btn-sm"
+            className="btn btn-primary border-0 btn-sm bg-light"
             onClick={() => handleTrackClick(latitude, longitude)}
           >
             <img

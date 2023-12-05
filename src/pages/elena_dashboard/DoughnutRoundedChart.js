@@ -130,11 +130,13 @@ const DoughnutRoundedChart = () => {
   const chartCode = `function ChartOptions() {
     const chartRef = useRef(null)
     const isMobile = window.innerWidth < 992;
+
+    const chartStyles = {height:'25rem', width: '100%'}
     const getOption = () => ({
       
       legend: {
         orient: window.innerWidth < 530 ? 'horizontal' : 'horizontal', // Change the legend orientation
-        left: 'left',
+        center: 'center'
       },
       series: [
         {
@@ -256,20 +258,20 @@ const DoughnutRoundedChart = () => {
       //   window.addEventListener('resize', updateDimensions);
       //   return () => window.removeEventListener('resize', updateDimensions);
       // }, []);
-  
+      
       return (
         <ReactEChartsCore
           echarts={echarts}
           option={getOption()}
           ref={chartRef}
-          style={{ height: '25rem' }}
+          style={chartStyles}
         />
       );
     }
   `;
 
   return (
-    <FalconComponentCard dir="ltr" className="h-100">
+    <FalconComponentCard dir="ltr" className="h-100 mx-auto">
       <FalconComponentCard.Header title="Total Vehicle Status" light={false} />
       <FalconComponentCard.Body
         code={chartCode}

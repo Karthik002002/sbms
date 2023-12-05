@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import classNames from 'classnames';
-import { Card } from 'react-bootstrap';
+import { Card, Row, Col } from 'react-bootstrap';
 import NavbarVertical from 'components/navbar/vertical_tracking/NavbarVertical';
 // import ProductProvider from 'components/app/e-commerce/ProductProvider';
 // import CourseProvider from 'components/app/e-learning/CourseProvider';
@@ -42,15 +42,20 @@ const MainLayout = () => {
       <NavbarVertical />
       {/* <ProductProvider> */}
       {/* <CourseProvider> */}
-
-      <Card className="mb-3">
-        <VehicleTable onTrackClick={handleTrackClick} />
-      </Card>
-      <div className={classNames('content', { 'pb-0': isKanban })}>
-        <div className="mt-5">
-          <LeafletMapExample Location={currentLocation} />
-        </div>
-      </div>
+      <Row className="my-3">
+        <Col md={6} className="">
+          <Card className="mb-3">
+            <VehicleTable onTrackClick={handleTrackClick} />
+          </Card>
+        </Col>
+        <Col md={6} className="">
+          <div className={classNames('content', { 'pb-0': isKanban })}>
+            <div className="">
+              <LeafletMapExample Location={currentLocation} />
+            </div>
+          </div>
+        </Col>
+      </Row>
       {/* </CourseProvider> */}
       {/* </ProductProvider> */}
     </div>

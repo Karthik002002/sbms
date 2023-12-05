@@ -23502,6 +23502,7 @@ h5 {
     width: 12.625rem;
     height: calc(100vh - var(--falcon-top-nav-height));
     padding: 0.5rem 0 0;
+    display: none;
   }
   .navbar-vertical.navbar-expand-xl .navbar-vertical-toggle {
     display: flex;
