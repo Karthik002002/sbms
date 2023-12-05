@@ -131,17 +131,17 @@ const DoughnutRoundedChart = () => {
     const chartRef = useRef(null)
     const isMobile = window.innerWidth < 992;
     const getOption = () => ({
-      responsive: true,
+      
       legend: {
         orient: window.innerWidth < 530 ? 'horizontal' : 'horizontal', // Change the legend orientation
         left: 'left',
-        
       },
       series: [
         {
           type: 'pie',
+          margin: 40,
           radius: ['40%', '70%'],
-          center: window.innerWidth < 780  ? ['50%', '65%'] : window.innerWidth < 580  ? ['50%', '65%'] : window.innerWidth < 430 ? ['50%', '58%'] : window.innerWidth ? ['50%','60%']: ['50%','60%'],
+          center: window.innerWidth < 1030  ? ['50%', '40%'] : window.innerWidth < 780  ? ['50%', '65%'] : window.innerWidth < 580  ? ['50%', '65%'] : window.innerWidth < 430 ? ['50%', '58%'] : window.innerWidth < 330 ? ['60%','55%']: ['50%','60%'],
           avoidLabelOverlap: false,
           itemStyle: {
             borderRadius: 10,
@@ -149,17 +149,7 @@ const DoughnutRoundedChart = () => {
             borderWidth: 2
           },
           label: {
-            show: !isMobile,
-            alignTo :'center',
-            minMargin: 5,
-            edgeDistance: 30,
-            lineHeight: 15,
-            rich:{
-              time:{
-                fontSize:10,
-                color: '#ffffff',
-              }
-            }
+            show: false
           },
           labelLine: {
             show: false
@@ -237,9 +227,6 @@ const DoughnutRoundedChart = () => {
         axisPointer: {
           type: 'none'
         },
-        textStyle: {
-          fontSize: '10px'
-        },
       }
       });
   
@@ -275,7 +262,7 @@ const DoughnutRoundedChart = () => {
           echarts={echarts}
           option={getOption()}
           ref={chartRef}
-          style={{ height: '20rem' }}
+          style={{ height: '25rem' }}
         />
       );
     }

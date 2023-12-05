@@ -48,15 +48,20 @@ const AdminDashboard = () => {
     };
     fetchData();
   }, []);
-  
+
   return (
     <div className="container mt-5">
       <Row className="my-3">
         <Col md={6} className="mb-5">
           <RealTimeUsers />
         </Col>
-        <Col md={6} className="mb-5">
+        
+        {/* <Col md={6} className="mb-5">
           <SessionByBrowser />
+        </Col> */}
+
+        <Col md={6} className="mb-5">
+          <DoughnutRoundedChart />
         </Col>
       </Row>
 
@@ -68,10 +73,6 @@ const AdminDashboard = () => {
         <DealStorageFunnel />
       </Row> */}
 
-      <Row className="mt-5">
-        <Col md={6} className="mb-5">
-          <DoughnutRoundedChart />
-        </Col>
         {/* <Col md={6} className="mb-5">
           <GradientBarChart />
         </Col>
@@ -81,7 +82,8 @@ const AdminDashboard = () => {
         <Col md={6} className="mb-5">
           <RaceChart />
         </Col> */}
-      </Row>
+
+        
       <Row className="mb-5">
         <StackedHorizontalChart />
       </Row>
