@@ -129,32 +129,37 @@ const DoughnutRoundedChart = () => {
   });
   const chartCode = `function ChartOptions() {
     const chartRef = useRef(null)
-    
+    const isMobile = window.innerWidth < 992;
     const getOption = () => ({
+      responsive: true,
       legend: {
-        type: 'scroll',
-    orient: 'vertical',
-    left: window.innerWidth < 320 ? 10 : 'left',
-    top: window.innerWidth < 320 ? 'middle' : 'auto',
-    align: window.innerWidth < 320 ? 'left' : 'left',
-    textStyle: {
-      color: getColor('gray-600')
-    },
+        orient: window.innerWidth < 530 ? 'horizontal' : 'horizontal', // Change the legend orientation
+        left: 'left',
+        
       },
       series: [
         {
           type: 'pie',
           radius: ['40%', '70%'],
-          center: window.innerWidth < 320  ? ['50%', '50%'] : ['50%', '55%'],
-          avoidLabelOverlap: true,
+          center: window.innerWidth < 780  ? ['50%', '65%'] : window.innerWidth < 580  ? ['50%', '65%'] : window.innerWidth < 430 ? ['50%', '58%'] : window.innerWidth ? ['50%','60%']: ['50%','60%'],
+          avoidLabelOverlap: false,
           itemStyle: {
             borderRadius: 10,
             borderColor: getColor('gray-100'),
             borderWidth: 2
           },
           label: {
-            show: false,
-            position: 'center'
+            show: !isMobile,
+            alignTo :'center',
+            minMargin: 5,
+            edgeDistance: 30,
+            lineHeight: 15,
+            rich:{
+              time:{
+                fontSize:10,
+                color: '#ffffff',
+              }
+            }
           },
           labelLine: {
             show: false
@@ -218,11 +223,12 @@ const DoughnutRoundedChart = () => {
             },
             
           ]
-        }
+        },
+        
       ],
       tooltip: {
         trigger: 'item',
-        padding: [7, 10],
+        padding: [5, 5],
         backgroundColor: getColor('gray-100'),
         borderColor: getColor('gray-300'),
         textStyle: { color: getColor('dark') },
@@ -230,36 +236,39 @@ const DoughnutRoundedChart = () => {
         transitionDuration: 0,
         axisPointer: {
           type: 'none'
-        }
+        },
+        textStyle: {
+          fontSize: '10px'
+        },
       }
       });
   
       //------- Responsive on window resize -------
       
-      const updateDimensions = () => {
-        if (window.innerWidth < 530) {
-          chartRef.current.getEchartsInstance().setOption({
-            series: [
-              {
-                center: ['65%', '55%']
-              }
-            ]
-          });
-        } 
-        else
-          chartRef.current.getEchartsInstance().setOption({
-            series: [
-              {
-                center: ['50%', '55%']
-              }
-            ]
-          });
-      }
+      // const updateDimensions = () => {
+      //   if (window.innerWidth < 530) {
+      //     chartRef.current.getEchartsInstance().setOption({
+      //       series: [
+      //         {
+      //           center: ['65%', '55%']
+      //         }
+      //       ]
+      //     });
+      //   } 
+      //   else
+      //     chartRef.current.getEchartsInstance().setOption({
+      //       series: [
+      //         {
+      //           center: ['50%', '55%']
+      //         }
+      //       ]
+      //     });
+      // }
     
-      useEffect(() => {
-        window.addEventListener('resize', updateDimensions);
-        return () => window.removeEventListener('resize', updateDimensions);
-      }, []);
+      // useEffect(() => {
+      //   window.addEventListener('resize', updateDimensions);
+      //   return () => window.removeEventListener('resize', updateDimensions);
+      // }, []);
   
       return (
         <ReactEChartsCore

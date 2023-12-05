@@ -55,7 +55,7 @@ const CustomersTableHeader = ({ selectedRowIds }) => {
               icon="external-link-alt"
               transform="shrink-3"
             >
-              <Link to="/trackingpage">
+              <Link to="/bus-tracking">
                 <span className="d-none d-sm-inline-block ms-1">Track</span>
               </Link>
             </IconButton>
