@@ -1,0 +1,39 @@
+/*  Tracking page */
+
+.tracking-page-table{
+    height: 75vh;
+    max-height: 80vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Responsive design  */
+
+@media only screen and (max-width:1024px){
+    .tracking-page-table{
+        max-height: 60vh;
+        font-size: 10px !important;
+    }
+}
+
+@media only screen and (max-width: 1280px){
+    .tracking-page-table{
+        
+
+    }
+}

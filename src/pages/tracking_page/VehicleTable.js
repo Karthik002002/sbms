@@ -1,5 +1,5 @@
 import AdvanceTableWrapper from 'components/common/advance-table/AdvanceTableWrapper';
-import { Card } from 'react-bootstrap';
+import { Card, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AdvanceTable from 'components/common/advance-table/AdvanceTable';
 import tableLocationMarker from 'assets/img/icons/map-marker.png';
@@ -85,15 +85,24 @@ const VehicleTable = ({ onTrackClick }) => {
   return (
     <div>
       <AdvanceTableWrapper columns={columns} data={tableData}>
+        <Card.Header>
+          <Row className="flex-center">
+            <Col xs={4} sm="auto" className="d-flex align-items-center pe-0">
+              <h6 className="fs-0 mb-0 text-nowrap py-2 py-xl-0 ms-2 text-center p-2">
+                Vehicle List
+              </h6>
+            </Col>
+          </Row>
+        </Card.Header>
         <Card.Body>
           <AdvanceTable
             table
             headerClassName="bg-200 text-900 text-nowrap align-middle"
-            rowClassName="align-middle white-space-nowrap"
+            rowClassName="align-middle text-* text-wrap white-space-wrap"
             tableProps={{
               size: 'sm',
               striped: true,
-              className: 'fs--1 mb-0 overflow-hidden'
+              className: 'fs--1 mb-0 overflow-auto'
             }}
           />
         </Card.Body>
