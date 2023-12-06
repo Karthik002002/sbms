@@ -48,7 +48,7 @@ const NavbarTop = () => {
 
   return (
     <Navbar
-      className={classNames('navbar-glass fs--1 navbar-top sticky-kit', {
+      className={classNames('navbar-glass fs--1 navbar-top sticky-kit navbar-background-color', {
         // 'navbar-glass-shadow': showDropShadow
         'navbar-glass-shadow': showDropShadow && !isChat
       })}
@@ -120,7 +120,7 @@ const NavbarTopElements = ({
         </button>
       </Navbar.Toggle>
 
-      <Logo at="navbar-top" width={40} id="topLogo" />
+      <Logo at="navbar-top me-1" width={40} id="topLogo" className={'ms-2 bg-light rounded align-middle me-2 '}/>
 
       {/* {navbarPosition === 'top' || navbarPosition === 'combo' ? ( */}
       <Navbar.Collapse in={navbarCollapsed} className="scrollbar pb-3 pb-lg-0">

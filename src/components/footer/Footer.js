@@ -4,7 +4,7 @@ import { version } from 'config';
 
 const Footer = () => (
   <footer className="footer">
-    <Row className="justify-content-between text-center fs--1 mt-4 mb-3">
+    <Row className="justify-content-between text-center fs--1 mt-4 mb-3 ms-2">
       <Col sm="auto">
         <p className="mb-0 text-600">
           School Bus Mangement System{' '}

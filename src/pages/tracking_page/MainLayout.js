@@ -43,12 +43,12 @@ const MainLayout = () => {
       {/* <ProductProvider> */}
       {/* <CourseProvider> */}
       <Row className="my-3">
-        <Col sm={2}md={4} className="">
+        <Col sm={2}md={3} className="">
           <Card className="mb-3">
             <VehicleTable onTrackClick={handleTrackClick} />
           </Card>
         </Col>
-        <Col sm={10} md={8} className="">
+        <Col sm={10} md={9} className="">
           <div className={classNames('content', { 'pb-0': isKanban })}>
             <div className="">
               <LeafletMapExample Location={currentLocation} />

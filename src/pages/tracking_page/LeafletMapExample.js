@@ -324,7 +324,7 @@ const LeafletMapExample = ({ Location }) => {
         center={[12.972442, 77.580643]}
         // center={position}
         radius={200}
-        style={{ height: '80vh', width: '100%' }}
+        style={{ height: '85vh', width: '100%' }}
       >
         <LayerComponent />
       </MapContainer>

@@ -29,7 +29,7 @@ const VehicleTable = ({ onTrackClick }) => {
   const columns = [
     {
       accessor: 'vehicle_reg_num',
-      Header: 'Vehicle Number',
+      Header: 'Vehicle',
       headerProps: { className: 'pe-1' },
       cellProps: {
         className: 'py-2'
@@ -44,7 +44,7 @@ const VehicleTable = ({ onTrackClick }) => {
     },
     {
       accessor: 'school_name', // Add a new column for school name
-      Header: 'School Name',
+      Header: 'School ',
       headerProps: { className: 'pe-1' },
       cellProps: {
         className: 'py-2'

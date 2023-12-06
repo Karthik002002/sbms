@@ -2,12 +2,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
-import team3 from 'assets/img/team/avatar.png';
+import team3 from 'assets/img/team/Avatar1.png';
 import Avatar from 'components/common/Avatar';
 
 const ProfileDropdown = () => {
   return (
-    <Dropdown navbar={true} as="li">
+    <Dropdown navbar={true} as="li" >
       <Dropdown.Toggle
         bsPrefix="toggle"
         as={Link}
@@ -17,8 +17,8 @@ const ProfileDropdown = () => {
         <Avatar src={team3} />
       </Dropdown.Toggle>
 
-      <Dropdown.Menu className="dropdown-caret dropdown-menu-card  dropdown-menu-end">
-        <div className="bg-white rounded-2 py-2 dark__bg-1000">
+      <Dropdown.Menu className="dropdown-caret dropdown-menu-card  dropdown-menu-end ">
+        <div className="bg-light rounded-2 py-2 dark__bg-1000">
           {/* <Dropdown.Item className="fw-bold text-warning" href="#!">
             <FontAwesomeIcon icon="crown" className="me-1" />
             <span>Go Pro</span>

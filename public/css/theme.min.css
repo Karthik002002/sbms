@@ -1092,7 +1092,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
   --falcon-nav-tabs-link-active-color: #5e6e82;
   --falcon-nav-tabs-link-active-bg: #edf2f9;
   --falcon-nav-tabs-link-active-border-color: #d8e2ef #d8e2ef #edf2f9;
-  --falcon-bg-navbar-glass: rgba(237, 242, 249, 0.96);
+  /* --falcon-bg-navbar-glass: rgba(237, 242, 249, 0.96); */
+  --falcon-bg-navbar-glass:#2c7be5;
   --falcon-nav-pills-link-active-color: #fff;
   --falcon-nav-pills-link-active-bg: #2c7be5;
   --falcon-navbar-dark-color: hsla(0, 0%, 100%, 0.55);
@@ -6404,7 +6405,7 @@ fieldset:disabled .tox .tox-menu__footer .tox-button:last-child {
 .navbar {
   --falcon-navbar-padding-x: 1rem;
   --falcon-navbar-padding-y: 0.5rem;
-  --falcon-navbar-color: var(--falcon-navbar-light-color);
+  --falcon-navbar-color: var(--falcon-navbar-dark-active-color); /* Changed to the white according to the background color (blue)*/
   --falcon-navbar-hover-color: var(--falcon-navbar-light-hover-color);
   --falcon-navbar-disabled-color: var(--falcon-navbar-light-disabled-color);
   --falcon-navbar-active-color: var(--falcon-navbar-light-active-color);

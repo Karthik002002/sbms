@@ -1,10 +1,19 @@
+/* Navbar  */
+
+.navbar-background-color{
+  color: white ; 
+}
+
+
+
+
+
 /*  Tracking page */
 
 .tracking-page-table{
     height: 75vh;
     max-height: 80vh;
 }
-
 
 .row > * {
     flex-shrink: 0;
@@ -23,18 +32,6 @@
 
 /* Responsive design  */
 
-@media only screen and (max-width:1024px){
-    .tracking-page-table{
-        max-height: 60vh;
-        font-size: 10px !important;
-    }
-}
-@media (min-width: 1200px){
-.container, .container-lg, .container-md, .container-sm, .container-xl {
-    max-width: none !important;
-}
-}
-
 @media only screen and (max-width: 1280px){
     nav.navbar-glass.fs--1.navbar-top.navbar.navbar-expand-lg.navbar-light {
         padding: 0px 5px 0px 5px;
@@ -43,4 +40,28 @@
       .container, .container-lg, .container-md, .container-sm, .container-xl{
         max-width: unset !important;
       }
+      .leaflet-container {
+        width: 100% !important;
+        height: 85vh !important;
+        z-index: 1;
+    }
+}
+
+@media (min-width: 1200px){
+  .container, .container-lg, .container-md, .container-sm, .container-xl {
+      max-width: none !important;
+  }
+  }
+
+  @media only screen and (max-width:1024px){
+    .tracking-page-table{
+        max-height: 60vh;
+        font-size: 10px !important;
+    }
+}
+
+@media only screen and (max-width:768px){
+  .card-header, .card-body{
+    font-size: 10px !important;
+  }
 }
