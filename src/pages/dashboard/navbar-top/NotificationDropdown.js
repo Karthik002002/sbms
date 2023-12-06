@@ -20,7 +20,7 @@ const NotificationDropdown = () => {
     useFakeFetch(rawEarlierNotifications);
   const [isOpen, setIsOpen] = useState(false);
   const [isAllRead, setIsAllRead] = useState(false);
-
+  const [notificationCount, setNotificationCount] = useState(5)
   // Handler
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -61,7 +61,8 @@ const NotificationDropdown = () => {
           'notification-indicator notification-indicator-primary': !isAllRead
         })}
       >
-        <FontAwesomeIcon icon="bell" transform="shrink-6" className="fs-4" />
+        <FontAwesomeIcon icon="bell" transform="shrink-6" className="fs-4 me--4 notification-bell" />
+        {notificationCount > 0 && ( <span className="notification-count notification-counter">{notificationCount}</span>)}
       </Dropdown.Toggle>
 
       <Dropdown.Menu className="dropdown-menu-card dropdown-menu-end dropdown-caret dropdown-caret-bg">

@@ -25333,7 +25333,7 @@ html[dir='rtl'] .img-dropdown {
   font-weight: 700;
 }
 .notification-indicator-primary:before {
-  background-color: var(--falcon-primary);
+  background-color: var(--falcon-danger);
 }
 .notification-indicator-secondary:before {
   background-color: var(--falcon-secondary);

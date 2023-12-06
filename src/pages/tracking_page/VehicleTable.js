@@ -1,9 +1,10 @@
 import AdvanceTableWrapper from 'components/common/advance-table/AdvanceTableWrapper';
-import { Card, Row, Col } from 'react-bootstrap';
+import { Card, Row, Col, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AdvanceTable from 'components/common/advance-table/AdvanceTable';
 import tableLocationMarker from 'assets/img/icons/map-marker.png';
 import React from 'react';
+import historyLogo from '../../assets/img/icons/history-logo.png';
 
 const VehicleTable = ({ onTrackClick }) => {
   const responseData = JSON.parse(sessionStorage.getItem('dashboardData'));
@@ -30,14 +31,14 @@ const VehicleTable = ({ onTrackClick }) => {
     {
       accessor: 'vehicle_reg_num',
       Header: 'Vehicle',
-      headerProps: { className: 'pe-1' },
+      headerProps: { className: '' },
       cellProps: {
-        className: 'py-2'
+        className: 'p-0'
       },
       Cell: rowData => {
         return (
           <div className="flex-1">
-            <h5 className="mb-0 fs--1">{rowData.value}</h5>
+            <td className="mb-0">{rowData.value}</td>
           </div>
         );
       }
@@ -47,12 +48,12 @@ const VehicleTable = ({ onTrackClick }) => {
       Header: 'School ',
       headerProps: { className: 'pe-1' },
       cellProps: {
-        className: 'py-2'
+        className: 'p-0'
       },
       Cell: rowData => {
         return (
           <div className="flex-1">
-            <h5 className="mb-0 fs--1">{rowData.value}</h5>
+            <td className="mb-0 ">{rowData.value}</td>
           </div>
         );
       }
@@ -61,21 +62,44 @@ const VehicleTable = ({ onTrackClick }) => {
       Header: 'Track',
       headerProps: { className: 'pe-1' },
       cellProps: {
-        className: 'py-2'
+        className: 'p-0'
       },
       Cell: rowData => {
         const { latitude, longitude } = rowData.row.original;
         return (
-          <div
-            className="btn btn-primary border-0 btn-sm bg-light"
-            onClick={() => handleTrackClick(latitude, longitude)}
+          <div className="d-flex justify-content-center  border-0 btn-sm bg-white track-btn-button pt-1 p-0">
+            <div className="d-flex">
+              <Button
+                type="button"
+                onClick={() => handleTrackClick(latitude, longitude)}
+                className="bg-white border-0 m-1 h-auto"
+              >
+                <img
+                  src={tableLocationMarker}
+                  alt="marker"
+                  height={15}
+                  width={15}
+                />
+              </Button>
+            </div>
+            <div className="d-flex">
+            <OverlayTrigger
+            key="left"
+            placement='top'
+            overlay={
+              <Tooltip style={{ position: 'fixed' }} id="ThemeColor">
+                History
+              </Tooltip>
+            }
           >
-            <img
-              src={tableLocationMarker}
-              alt="marker"
-              height={15}
-              width={15}
-            />
+              <Button
+                type="button"
+                className="p-auto bg-white border-0 m-1  h-auto"
+              >
+                <img src={historyLogo} alt="Logo" height={15} width={15} />
+              </Button>
+              </OverlayTrigger>
+            </div>
           </div>
         );
       }
@@ -87,8 +111,12 @@ const VehicleTable = ({ onTrackClick }) => {
       <AdvanceTableWrapper columns={columns} data={tableData}>
         <Card.Header>
           <Row className="flex-center">
-            <Col xs={4} sm="auto" className="d-flex align-items-center pe-0">
-              <h6 className="fs-0 mb-0 text-nowrap py-2 py-xl-0 ms-2 text-center p-2">
+            <Col
+              xs={4}
+              sm="auto"
+              className="d-flex align-items-center justify-content-center pe-0"
+            >
+              <h6 className="fs-0 mb-0 text-nowrap py-2 py-xl-0 m-auto text-center p-2">
                 Vehicle List
               </h6>
             </Col>
@@ -97,12 +125,12 @@ const VehicleTable = ({ onTrackClick }) => {
         <Card.Body>
           <AdvanceTable
             table
-            headerClassName="bg-200 text-900 text-nowrap align-middle"
-            rowClassName="align-middle text-* text-wrap white-space-wrap"
+            headerClassName="bg-200 text-900 text-wrap align-middle text-center"
+            rowClassName="align-middle justify-content-center text-* text-wrap white-space-wrap"
             tableProps={{
               size: 'sm',
               striped: true,
-              className: 'fs--1 mb-0 overflow-auto'
+              className: ' mb-0 overflow-auto'
             }}
           />
         </Card.Body>

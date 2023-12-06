@@ -5,6 +5,20 @@
 }
 
 
+/* Notification bell */
+.notification-bell{
+  position: relative;
+}
+
+
+.notification-counter{
+  position: relative;
+  vertical-align: top;
+  /* z-index: 10; */
+  margin-right: 6px;
+  font-size: smaller;
+}
+
 
 
 
@@ -13,6 +27,10 @@
 .tracking-page-table{
     height: 75vh;
     max-height: 80vh;
+}
+
+.track-btn-button{
+  padding-top: 0.1rem !important;
 }
 
 .row > * {
@@ -51,6 +69,8 @@
   .container, .container-lg, .container-md, .container-sm, .container-xl {
       max-width: none !important;
   }
+
+  
   }
 
   @media only screen and (max-width:1024px){
@@ -58,6 +78,17 @@
         max-height: 60vh;
         font-size: 10px !important;
     }
+    .card-header{
+      padding: 5px !important;
+    }
+    .card-body{
+      padding: 4px !important;
+    }
+    .card-header, .card-body{
+      font-size: 10px !important;
+    }
+
+
 }
 
 @media only screen and (max-width:768px){
