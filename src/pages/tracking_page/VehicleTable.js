@@ -1,5 +1,12 @@
 import AdvanceTableWrapper from 'components/common/advance-table/AdvanceTableWrapper';
-import { Card, Row, Col, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import {
+  Card,
+  Row,
+  Col,
+  Button,
+  OverlayTrigger,
+  Tooltip
+} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AdvanceTable from 'components/common/advance-table/AdvanceTable';
 import tableLocationMarker from 'assets/img/icons/map-marker.png';
@@ -83,21 +90,21 @@ const VehicleTable = ({ onTrackClick }) => {
               </Button>
             </div>
             <div className="d-flex">
-            <OverlayTrigger
-            key="left"
-            placement='top'
-            overlay={
-              <Tooltip style={{ position: 'fixed' }} id="ThemeColor">
-                History
-              </Tooltip>
-            }
-          >
-              <Button
-                type="button"
-                className="p-auto bg-white border-0 m-1  h-auto"
+              <OverlayTrigger
+                key="left"
+                placement="top"
+                overlay={
+                  <Tooltip style={{ position: 'fixed' }} id="ThemeColor">
+                    History
+                  </Tooltip>
+                }
               >
-                <img src={historyLogo} alt="Logo" height={15} width={15} />
-              </Button>
+                <Button
+                  type="button"
+                  className="p-auto bg-white border-0 m-1  h-auto"
+                >
+                  <img src={historyLogo} alt="Logo" height={15} width={15} />
+                </Button>
               </OverlayTrigger>
             </div>
           </div>
@@ -125,8 +132,8 @@ const VehicleTable = ({ onTrackClick }) => {
         <Card.Body>
           <AdvanceTable
             table
-            headerClassName="bg-200 text-900 text-wrap align-middle text-center"
-            rowClassName="align-middle justify-content-center text-* text-wrap white-space-wrap"
+            headerClassName="bg-200 text-900 text-wrap align-middle text-center "
+            rowClassName="align-middle justify-content-center text-*  text-wrap white-space-wrap"
             tableProps={{
               size: 'sm',
               striped: true,

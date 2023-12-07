@@ -13,7 +13,7 @@ const AdvanceTable = ({
   tableProps
 }) => {
   return (
-    <div className="table-responsive scrollbar">
+    <div className="table-responsive scrollbar tracking-page-table">
       <Table {...getTableProps(tableProps)}>
         <thead className={headerClassName}>
           <tr>

@@ -1098,7 +1098,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   --falcon-nav-pills-link-active-bg: #2c7be5;
   --falcon-navbar-dark-color: hsla(0, 0%, 100%, 0.55);
   --falcon-navbar-dark-hover-color: hsla(0, 0%, 100%, 0.75);
-  --falcon-navbar-dark-active-color: #fff;
+  --falcon-navbar-dark-active-color: hsla(0, 0%, 100%, 0.75) ;
   --falcon-navbar-dark-disabled-color: hsla(0, 0%, 100%, 0.25);
   --falcon-navbar-dark-toggler-border-color: hsla(0, 0%, 100%, 0.1);
   --falcon-navbar-light-color: rgba(0, 0, 0, 0.55);
@@ -1603,7 +1603,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   --falcon-bg-navbar-glass: rgba(11, 23, 39, 0.96);
   --falcon-navbar-dark-color: rgba(11, 23, 39, 0.55);
   --falcon-navbar-dark-hover-color: rgba(11, 23, 39, 0.75);
-  --falcon-navbar-dark-active-color: #0b1727;
+  --falcon-navbar-dark-active-color: #fff;
   --falcon-navbar-dark-disabled-color: rgba(11, 23, 39, 0.25);
   --falcon-navbar-dark-toggler-border-color: rgba(11, 23, 39, 0.1);
   --falcon-navbar-light-color: hsla(0, 0%, 100%, 0.55);
@@ -1615,7 +1615,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   --falcon-navbar-light-brand-hover-color: var(
     --falcon-navbar-light-active-color
   );
-  --falcon-navbar-dark-brand-color: var(--falcon-navbar-dark-active-color);
+  --falcon-navbar-dark-brand-color: var(--falcon-gray-black);
   --falcon-navbar-dark-brand-hover-color: var(
     --falcon-navbar-dark-active-color
   );
