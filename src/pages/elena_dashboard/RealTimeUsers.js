@@ -47,18 +47,20 @@ const RealTimeUsers = () => {
     let data = JSON.parse(sessionStorage.getItem('dashboardData'));
     console.log(data);
     let temp = [];
-    let schoolID = 1;
+    let schoolID = 0;
     // data.user.companies.map(company => {
     //   company.schools.map(school => {
     //     temp.push({ id: school.id, name: school.name });
     //   });
     // });
-    data.map(company => {
-      company.schools.map(school => {
-        temp.push({ id: schoolID, name: school.school });
-        schoolID++;
-      });
-    });
+
+
+    // data.map(company => {
+    //   company.schools.map(school => {
+    //     temp.push({ id: schoolID, name: school.school });
+    //     schoolID++;
+    //   });
+    // });
 
     setSchools(temp);
   }, []);

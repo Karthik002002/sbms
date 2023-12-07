@@ -10,6 +10,19 @@
   position: relative;
 }
 
+.notification-bell-hov:hover{
+  filter: invert(1);
+}
+
+.invert-hover {
+  filter: invert(1); /* Initial state without hover, not inverted */
+  transition: filter 0.1s ease; /* Smooth transition for the filter property */
+}
+
+.invert-hover:hover {
+  filter: invert(0); /* Inverted state on hover */
+}
+
 
 .notification-counter{
   position: relative;

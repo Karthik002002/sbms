@@ -48,7 +48,10 @@
                         "frame_number": 36,
                         "checksum": "37",
                         "raw_data": "GPS,ELENA,1.0.2,NR,01,L,865263042351922,TN14BA9902,1,06112023,135744,12.8167,N,77.6974,E,15,16,17,18,19,20,21,1,1,24,25,1,C,28,29,30,31,32,33,34,35,36,37",
-                        "parked": false
+                        "parked": true,
+                        "limit" : 60,
+                        "driver": "Driver 1",
+                        "phone": "8656896365"
                     },
                     {
                         "id": 1963,
@@ -67,7 +70,7 @@
                         "latitude_direction": true,
                         "longitude": 77.6674,
                         "longitude_direction": true,
-                        "speed": 19.0,
+                        "speed": 70.0,
                         "course": 16.0,
                         "num_satellites": "17",
                         "altitude": 18.0,
@@ -91,7 +94,10 @@
                         "frame_number": 36,
                         "checksum": "37",
                         "raw_data": "GPS,ELENA,1.0.2,NR,01,L,865263042351922,TN14BA9902,1,06112023,135744,12.8167,N,77.6974,E,15,16,17,18,19,20,21,1,1,24,25,1,C,28,29,30,31,32,33,34,35,36,37",
-                        "parked": false
+                        "parked": false,
+                        "limit" : 60,
+                        "driver": "Driver 2",
+                        "phone": "8656896365"
                     },
                     {
                         "id": 1966,
@@ -110,7 +116,7 @@
                         "latitude_direction": true,
                         "longitude": 77.6474,
                         "longitude_direction": true,
-                        "speed": 15.0,
+                        "speed": 0.0,
                         "course": 16.0,
                         "num_satellites": "17",
                         "altitude": 18.0,
@@ -134,7 +140,10 @@
                         "frame_number": 36,
                         "checksum": "37",
                         "raw_data": "GPS,ELENA,1.0.2,NR,01,L,865263042351922,TN14BA9902,1,06112023,135744,12.8167,N,77.6974,E,15,16,17,18,19,20,21,1,1,24,25,1,C,28,29,30,31,32,33,34,35,36,37",
-                        "parked": false
+                        "parked": false,
+                        "limit" : 60,
+                        "driver": "Driver 3",
+                        "phone": "8656896365"
                     },
                     {
                         "id": 1970,
@@ -177,7 +186,10 @@
                         "frame_number": 36,
                         "checksum": "37",
                         "raw_data": "GPS,ELENA,1.0.2,NR,01,L,865263042351922,TN14BA9902,1,06112023,135744,12.8167,N,77.6974,E,15,16,17,18,19,20,21,1,1,24,25,1,C,28,29,30,31,32,33,34,35,36,37",
-                        "parked": false
+                        "parked": true,
+                        "limit" : 60,
+                        "driver": "Driver 4",
+                        "phone": "8656896365"
                     }
                 ]
             }
@@ -215,7 +227,7 @@
                         "pdop": 19.0,
                         "hdop": 20.0,
                         "network_op_name": "21",
-                        "ignition": true,
+                        "ignition": false,
                         "main_power_status": true,
                         "main_input_v": 24.0,
                         "internal_batt_V": 25.0,
@@ -232,7 +244,10 @@
                         "frame_number": 36,
                         "checksum": "37",
                         "raw_data": "GPS,ELENA,1.0.2,NR,01,L,860987057785542,KA01AB9993,1,06112023,135945,12.9492,N,80.2547,E,15,16,17,18,19,20,21,1,1,24,25,1,C,28,29,30,31,32,33,34,35,36,37",
-                        "parked": false
+                        "parked": false,
+                        "limit" : 60,
+                        "driver": "Driver 5",
+                        "phone": "8656896365"
                     },
                     {
                         "id": 1972,
@@ -275,7 +290,10 @@
                         "frame_number": 36,
                         "checksum": "37",
                         "raw_data": "GPS,ELENA,1.0.2,NR,01,L,865263042351922,TN14BA9902,1,06112023,135744,12.8167,N,77.6974,E,15,16,17,18,19,20,21,1,1,24,25,1,C,28,29,30,31,32,33,34,35,36,37",
-                        "parked": false
+                        "parked": false,
+                        "limit" : 60,
+                        "driver": "Driver 6",
+                        "phone": "8656896365"
                     }
                 ]
             },
@@ -324,7 +342,10 @@
                         "frame_number": 36,
                         "checksum": "37",
                         "raw_data": "GPS,ELENA,1.0.2,NR,01,L,865263042351922,TN14BA9902,1,06112023,135744,12.8167,N,77.6974,E,15,16,17,18,19,20,21,1,1,24,25,1,C,28,29,30,31,32,33,34,35,36,37",
-                        "parked": false
+                        "parked": false,
+                        "limit" : 60,
+                        "driver": "Driver 7",
+                        "phone": "8656896365"
                     },
                     {
                         "id": 1983,
@@ -367,7 +388,10 @@
                         "frame_number": 36,
                         "checksum": "37",
                         "raw_data": "GPS,ELENA,1.0.2,NR,01,L,865263042351922,TN14BA9902,1,06112023,135744,12.8167,N,77.6974,E,15,16,17,18,19,20,21,1,1,24,25,1,C,28,29,30,31,32,33,34,35,36,37",
-                        "parked": false
+                        "parked": false,
+                        "limit" : 60,
+                        "driver": "Driver 8",
+                        "phone": "8656896365"
                     },
                     {
                         "id": 1984,
@@ -410,7 +434,10 @@
                         "frame_number": 36,
                         "checksum": "37",
                         "raw_data": "GPS,ELENA,1.0.2,NR,01,L,865263042351922,TN14BA9902,1,06112023,135744,12.8167,N,77.6974,E,15,16,17,18,19,20,21,1,1,24,25,1,C,28,29,30,31,32,33,34,35,36,37",
-                        "parked": false
+                        "parked": false,
+                        "limit" : 60,
+                        "driver": "Driver 9",
+                        "phone": "8656896365"
                     }
                 ]
             }
@@ -421,7 +448,7 @@
         "vehicleCompany_id": 3,
         "schools": [
             {
-                "schools_name": "Nirmala vidyalaya",
+                "school_name": "Nirmala vidyalaya",
                 "school_id": 4,
                 "vehicles": [
                     {
@@ -441,14 +468,14 @@
                         "latitude_direction": true,
                         "longitude": 77.6974,
                         "longitude_direction": true,
-                        "speed": 15.0,
+                        "speed": 0.0,
                         "course": 16.0,
                         "num_satellites": "17",
                         "altitude": 18.0,
                         "pdop": 19.0,
                         "hdop": 20.0,
                         "network_op_name": "21",
-                        "ignition": true,
+                        "ignition": false,
                         "main_power_status": true,
                         "main_input_v": 24.0,
                         "internal_batt_V": 25.0,
@@ -465,7 +492,10 @@
                         "frame_number": 36,
                         "checksum": "37",
                         "raw_data": "GPS,ELENA,1.0.2,NR,01,L,865263042351922,TN14BA9902,1,06112023,135744,12.8167,N,77.6974,E,15,16,17,18,19,20,21,1,1,24,25,1,C,28,29,30,31,32,33,34,35,36,37",
-                        "parked": false
+                        "parked": true,
+                        "limit" : 60,
+                        "driver": "Driver 10",
+                        "phone": "8656896365"
                     }
                 ]
             }

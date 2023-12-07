@@ -28,26 +28,37 @@ const Customers = lazy(() => import('pages/dashboard/table/Customers'));
 const UsersByCountry = lazy(() => import('./UsersByCountry'));
 import { countryData } from 'data/countryData';
 
+import datas from "../../sampleData/data.json" 
+
 import { sessionByCountry } from 'data/dashboard/analytics';
 
 const AdminDashboard = () => {
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const dashboardData = await axios.get(
+  //         'http://sbmsadmin.elenageosys.com:8081/report-management/userbased/?username=superuser'
+  //       );
+  //       window.sessionStorage.setItem(
+  //         'dashboardData',
+  //         JSON.stringify(dashboardData.data)
+  //       );
+  //       console.log(dashboardData.data);
+  //     } catch (err) {
+  //       console.log('Dashboard data error', err.message);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const dashboardData = await axios.get(
-          'http://sbmsadmin.elenageosys.com:8081/report-management/userbased/?username=superuser'
-        );
-        window.sessionStorage.setItem(
-          'dashboardData',
-          JSON.stringify(dashboardData.data)
-        );
-        console.log(dashboardData.data);
-      } catch (err) {
-        console.log('Dashboard data error', err.message);
-      }
-    };
-    fetchData();
+    // Store datas in session storage when the component mounts
+    window.sessionStorage.setItem('dashboardData', JSON.stringify(datas));
   }, []);
+
+
+  
   
   return (
     <div className="container mt-5 ">

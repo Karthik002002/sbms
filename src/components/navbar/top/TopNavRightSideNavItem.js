@@ -10,7 +10,7 @@ import { Nav, OverlayTrigger, Tooltip } from 'react-bootstrap';
 // import { Dropdown } from 'react-bootstrap';
 // import { Link } from 'react-router-dom';
 import { Form } from 'react-bootstrap';
-// import NotificationIcon from './NotificationIcon';
+import NotificationIcon from './NotificationIcon';
 import NotificationDropdown from 'pages/dashboard/navbar-top/NotificationDropdown';
 
 const TopNavRightSideNavItem = () => {
@@ -90,10 +90,10 @@ const TopNavRightSideNavItem = () => {
       </Nav.Item>
 
       {/* <CartNotification /> */}
-      <NotificationDropdown />
+      {/* <NotificationDropdown /> */}
       {/* <NineDotMenu /> */}
       <ProfileDropdown />
-      {/* <NotificationIcon  /> */}
+      <NotificationIcon  />
     </Nav>
   );
 };

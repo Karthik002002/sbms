@@ -142,7 +142,7 @@ const TotalSales = ({ data }) => {
       <FalconCardHeader
         title="Daily KM report"
         titleTag="h5"
-        className="pb-0"
+        className="pb-0 ms-3"
         endEl={
           <Flex>
             <Form.Select

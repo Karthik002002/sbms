@@ -25,14 +25,15 @@ const NotificationIcon = () => {
       bsPrefix="toggle"
       as={Link}
       to="#!"
-      className="pe-1 mt-0 m-2 bg-none ps-2 nav-link">
+      className="pe-1 mt-0 m-2 bg-none ps-2 nav-link ">
         
         <img
           src={NotificationBell}
+          className="invert-hover"
           style={{
             resizeMode: 'contain',
-            height: 20,
-            width: 20
+            height: 25,
+            width: 25,
           }}
         />
         <span class=" top-0 start-100 translate-middle badge rounded-pill bg-danger">{notificationCount}</span>

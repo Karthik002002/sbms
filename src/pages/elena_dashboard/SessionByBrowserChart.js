@@ -40,7 +40,7 @@ const SessionByBrowserChart = ({ chartdata }) => {
           borderWidth: 1,
           transitionDuration: 0,
           formatter: params =>
-            `<strong>${params.data.name}:</strong> ${params.data.value}%`
+            `<strong>${params.data.name}:</strong> ${params.data.value}`
         },
 
         legend: { show: false },

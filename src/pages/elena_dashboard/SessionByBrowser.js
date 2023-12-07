@@ -31,8 +31,12 @@ const SessionByBrowser = () => {
         let total_bus = 0;
         company.schools.forEach(school => {
           total_bus = total_bus + school.vehicles.length;
+          
+            temp.push({ name: school.school_name, value: school.vehicles.length });
+          
         });
-        temp.push({ name: company.vehicleCompany, value: total_bus });
+        
+        console.log(company.vehicle)
       });
       setChartData(temp);
     }
@@ -43,7 +47,7 @@ const SessionByBrowser = () => {
       <FalconCardHeader
         title="Bus Count Overview"
         titleTag="h5"
-        className="py-2"
+        className="py-2 text-center"
         light
       />
       <Card.Body
@@ -56,7 +60,7 @@ const SessionByBrowser = () => {
           <SessionByBrowserChart chartdata={chartData} />
         </div>
         <div className="border-top">
-          <Table size="sm" className="mb-0">
+          <Table size="sm" className="mb-0 text-center">
             <tbody>
               {chartData.map((data, i) => (
                 <TableRow key={i} data={data} />

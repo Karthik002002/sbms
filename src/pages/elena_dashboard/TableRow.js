@@ -9,7 +9,7 @@ const TableRow = ({ data }) => {
   // const { id, company_name, vehicle_count } = data;
   return (
     <tr>
-      <td className="py-3">
+      <td className="py-3 text-center">
         <Flex alignItems="center">
           {/* <img src={icon} alt={label} width={16} /> */}
           <h6 className="text-600 mb-0 ms-2">{data.name}</h6>

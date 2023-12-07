@@ -13,73 +13,103 @@ import AdvanceTable from 'components/common/advance-table/AdvanceTable';
 
 const Customers = () => {
   const [customers, setCustomers] = useState([]);
+  const [tableData, setTableData] = useState([])
+  //using the data from the local storage
+ 
   useEffect(() => {
-    fetch('https://sbmsadmin.elenageosys.com/vehicle-management/table/', {
-      headers: {
-        Authorization: 'token 49deb7cf59acb1ffe4b675584a1617ba9afeca68'
-      }
-    })
-      .then(res => res.json())
-      .then(data => setCustomers(data))
-      .catch(err => console.error(err));
+    const data = window.sessionStorage.getItem('dashboardData');
+    if (data) {
+      const parsedData = JSON.parse(data);
+      setCustomers(parsedData);
+      // Process data here
+      const newData = parsedData.reduce((acc, company) => {
+        company.schools.forEach(school => {
+          school.vehicles.forEach(vehicle => {
+            acc.push({
+              vehicle_reg: vehicle.vehicle_reg,
+              school_name: school.school_name,
+              driver: vehicle.driver,
+              phone: vehicle.phone,
+            });
+          });
+        });
+        return acc;
+      }, []);
+      setTableData(newData);
+    }
   }, []);
+ 
+  
+
+
+  // // modify this code in need to access from the api 
+  // useEffect(() => {
+  //   fetch('https://sbmsadmin.elenageosys.com/vehicle-management/table/', {
+  //     headers: {
+  //       Authorization: 'token 49deb7cf59acb1ffe4b675584a1617ba9afeca68'
+  //     }
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => setCustomers(data))
+  //     .catch(err => console.error(err));
+  // }, []);
 
   const columns = [
     {
-      accessor: 'name',
+      accessor: 'vehicle_reg',
       Header: 'Vehicle Number',
       headerProps: { className: 'pe-1' },
       cellProps: {
         className: 'py-2'
       },
       Cell: rowData => {
-        const { vehicle_reg_num } = rowData.row.original;
+        const { vehicle_reg } = rowData.row.original;
         return (
           <Link to="/e-commerce/customer-details">
             <div className="flex-1">
-              <h5 className="mb-0 fs--1">{vehicle_reg_num}</h5>
+              <h5 className="mb-0 fs--1">{vehicle_reg}</h5>
             </div>
           </Link>
         );
       }
     },
+    // {
+    //   accessor: 'id',
+    //   Header: 'Device ID',
+    //   Cell: rowData => {
+    //     const { device } = rowData.row.original;
+    //     return (
+    //       <Link to="/e-commerce/customer-details">
+    //         <div className="flex-1">
+    //           <h5 className="mb-0 fs--1">{device}</h5>
+    //         </div>
+    //       </Link>
+    //     );
+    //   }
+    // },
+    // {
+    //   accessor: 'owner',
+    //   Header: 'Vehicle Owner',
+    //   Cell: rowData => {
+    //     const { school_name } = rowData.row.original;
+    //     return (
+    //       <Link to="/e-commerce/customer-details">
+    //         <div className="flex-1">
+    //           <h5 className="mb-0 fs--1">{school_name}</h5>
+    //         </div>
+    //       </Link>
+    //     );
+    //   }
+    // },
     {
-      accessor: 'id',
-      Header: 'Device ID',
-      Cell: rowData => {
-        const { device } = rowData.row.original;
-        return (
-          <Link to="/e-commerce/customer-details">
-            <div className="flex-1">
-              <h5 className="mb-0 fs--1">{device}</h5>
-            </div>
-          </Link>
-        );
-      }
-    },
-    {
-      accessor: 'owner',
-      Header: 'Vehicle Owner',
-      Cell: rowData => {
-        const { vehicle_company } = rowData.row.original;
-        return (
-          <Link to="/e-commerce/customer-details">
-            <div className="flex-1">
-              <h5 className="mb-0 fs--1">{vehicle_company}</h5>
-            </div>
-          </Link>
-        );
-      }
-    },
-    {
-      accessor: 'school',
+      accessor: 'school_name',
       Header: 'School Name',
       Cell: rowData => {
-        const { school } = rowData.row.original;
+        const { school_name } = rowData.row.original;
         return (
           <Link to="/e-commerce/customer-details">
             <div className="flex-1">
-              <h5 className="mb-0 fs--1">{school}</h5>
+              <h5 className="mb-0 fs--1">{school_name}</h5>
             </div>
           </Link>
         );
@@ -140,7 +170,7 @@ const Customers = () => {
   return (
     <AdvanceTableWrapper
       columns={columns}
-      data={customers}
+      data={tableData}
       selection
       sortable
       pagination

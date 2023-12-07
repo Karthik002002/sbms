@@ -33,12 +33,14 @@ const DoughnutRoundedChart = () => {
   const [parked, setParked] = useState();
   const [noNetwork, setNoNetwork] = useState();
   const [inActive, setInActive] = useState();
-  const [noNetworkStatus, setNoNetworkStatus] = useState(String(false));
-  const [inActiveStatus, setInActiveStatus] = useState(String(false));
+  const [noNetworkStatus, setNoNetworkStatus] = useState(false);
+  const [inActiveStatus, setInActiveStatus] = useState(false);
   // const [inactive, setInactive] = useState()
 
   // console.log(sessionStorage.getItem('dashboardData'));
-  let dashboardData = JSON.parse(sessionStorage.getItem('dashboardData'));
+
+  let dashboardData = JSON.parse(sessionStorage.getItem('dashboardData')); //recieved the data from the demo data as stored in the local storage 
+  console.log(JSON.parse(sessionStorage.getItem('dashboardData')))
 
   useEffect(() => {
     let runningCount = 0;
@@ -52,7 +54,7 @@ const DoughnutRoundedChart = () => {
 
     let latLongArray = [];
 
-    const checkNoNetwork = setInterval(() => {
+    const checkNoNetwork = () => setInterval(() => {
       latLongArray.forEach(vehicle => {
         const foundVehicle = dashboardData
           .flatMap(company => company.schools)
@@ -86,28 +88,28 @@ const DoughnutRoundedChart = () => {
       company.schools.forEach(school => {
         school.vehicles.forEach(vehicle => {
           const { id, latitude, longitude } = vehicle;
-
+          console.log(vehicle.limit, vehicle.speed)
           latLongArray.push({ id, latitude, longitude });
 
           console.log(latLongArray);
-          if (vehicle.ignition == '1' && Number(vehicle.speed) > 0) {
-            runningCount++;
-          } else if (vehicle.ignition == '1' && Number(vehicle.speed) == 0) {
+          if (vehicle.ignition == '1' && Number(vehicle.speed) == 0) {
             idleCount++;
-          } else if (vehicle.ignition !== '1' && Number(vehicle.speed) == 0) {
-            stoppedCount++;
-          } else if (vehicle.ignition == '1' && Number(vehicle.speed) >= 60) {
+          }  else if (vehicle.ignition == '1' && Number (vehicle.speed >= vehicle.limit)) {
             rashDrivingCount++;
-          } else if (vehicle.ignition == '0' && Number(vehicle.speed) >= 0) {
-            towingCount++;
-          } else if (vehicle.location) {
-            //parked.Location(from api ) == currentLocation
+            console.log("true");
+          }  else if (vehicle.parked == "0" && vehicle.ignition == "1" && vehicle.speed == 0) {
             parkedCount++;
           } else if (checkNoNetwork() && noNetworkStatus) {
             noNetworkCount++;
           } else if (checkNoNetwork() && inActiveStatus) {
             inActiveCount++;
-          }
+          }else if (vehicle.ignition !== '1' && Number(vehicle.speed) == 0) {
+            stoppedCount++;
+          } else if (vehicle.ignition == '1' && Number(vehicle.speed) > 0) {
+            runningCount++;
+          }else if (vehicle.ignition == '0' && Number(vehicle.speed) >= 0) {
+            towingCount++;
+          } 
         });
       });
     });
@@ -143,7 +145,7 @@ const DoughnutRoundedChart = () => {
           type: 'pie',
           margin: 40,
           radius: ['40%', '70%'],
-          center: window.innerWidth < 1030  ? ['50%', '40%'] : window.innerWidth < 780  ? ['50%', '65%'] : window.innerWidth < 580  ? ['50%', '65%'] : window.innerWidth < 430 ? ['50%', '58%'] : window.innerWidth < 330 ? ['60%','55%']: ['50%','60%'],
+          center: window.innerWidth < 1030  ? ['50%', '50%'] : window.innerWidth < 780  ? ['50%', '65%'] : window.innerWidth < 580  ? ['50%', '65%'] : window.innerWidth < 430 ? ['50%', '58%'] : window.innerWidth < 330 ? ['60%','55%']: ['50%','60%'],
           avoidLabelOverlap: false,
           itemStyle: {
             borderRadius: 10,
