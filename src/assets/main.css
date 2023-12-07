@@ -33,6 +33,11 @@
 }
 
 
+/* sessionbybrowser component in AdminDashboard */
+.bus-count-overview{
+  max-height: 20vh !important;
+}
+
 
 
 /*  Tracking page */

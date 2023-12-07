@@ -54,13 +54,13 @@ const SessionByBrowser = () => {
         as={Flex}
         direction="column"
         justifyContent="between"
-        className="py-0"
+        className="py-0 "
       >
         <div className="my-auto py-5 py-md-5">
           <SessionByBrowserChart chartdata={chartData} />
         </div>
-        <div className="border-top">
-          <Table size="sm" className="mb-0 text-center">
+        <div className="border-top scrollbar bus-count-overview">
+          <Table size="sm" className="mb-0 text-center ">
             <tbody>
               {chartData.map((data, i) => (
                 <TableRow key={i} data={data} />

@@ -22,6 +22,7 @@ const VehicleTable = ({ onTrackClick }) => {
         acc.push({
           vehicle_reg_num: vehicle.vehicle_reg,
           school_name: school.school_name,
+          school_code: school.school_code, 
           latitude: vehicle.latitude,
           longitude: vehicle.longitude
         });
@@ -29,6 +30,10 @@ const VehicleTable = ({ onTrackClick }) => {
     });
     return acc;
   }, []);
+  
+  
+
+  console.log(tableData)
 
   const handleTrackClick = (latitude, longitude) => {
     onTrackClick(latitude, longitude);
@@ -45,22 +50,22 @@ const VehicleTable = ({ onTrackClick }) => {
       Cell: rowData => {
         return (
           <div className="flex-1">
-            <td className="mb-0">{rowData.value}</td>
+            <td className="mb-0 fs--2">{rowData.value}</td>
           </div>
         );
       }
     },
     {
       accessor: 'school_name', // Add a new column for school name
-      Header: 'School ',
+      Header: 'School',
       headerProps: { className: 'pe-1' },
       cellProps: {
         className: 'p-0'
       },
       Cell: rowData => {
         return (
-          <div className="flex-1">
-            <td className="mb-0 ">{rowData.value}</td>
+          <div className="flex-1 text-center justify-center ">
+            <td className="mb-0 p-0  fs--2">{rowData.value}</td>
           </div>
         );
       }
@@ -79,7 +84,7 @@ const VehicleTable = ({ onTrackClick }) => {
               <Button
                 type="button"
                 onClick={() => handleTrackClick(latitude, longitude)}
-                className="bg-white border-0 m-1 h-auto"
+                className="bg-white border-0  h-auto"
               >
                 <img
                   src={tableLocationMarker}
@@ -101,7 +106,7 @@ const VehicleTable = ({ onTrackClick }) => {
               >
                 <Button
                   type="button"
-                  className="p-auto bg-white border-0 m-1  h-auto"
+                  className=" bg-white border-0   h-auto"
                 >
                   <img src={historyLogo} alt="Logo" height={15} width={15} />
                 </Button>
