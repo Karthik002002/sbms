@@ -90,7 +90,7 @@ const DoughnutRoundedChart = () => {
           const { id, latitude, longitude } = vehicle;
           
           latLongArray.push({ id, latitude, longitude });
-
+          
           if (vehicle.ignition == '1' && Number(vehicle.speed) == 0) {
             idleCount++;
           }  else if (vehicle.ignition == '1' && Number (vehicle.speed >= vehicle.limit)) {

@@ -27,6 +27,7 @@ const RaceChart = lazy(() => import('./RaceChart'));
 const Customers = lazy(() => import('pages/dashboard/table/Customers'));
 const UsersByCountry = lazy(() => import('./UsersByCountry'));
 import { countryData } from 'data/countryData';
+import StackedHorizontalChartSample from './StackedHorizontalChartSample';
 
 import datas from "../../sampleData/data.json" 
 
@@ -93,7 +94,7 @@ const AdminDashboard = () => {
         </Col> */}
       </Row>
       <Row className="mb-5">
-        <StackedHorizontalChart />
+        <StackedHorizontalChartSample />
       </Row>
       <Row className="mb-5">
         <TotalSales data={_default.totalSales} />

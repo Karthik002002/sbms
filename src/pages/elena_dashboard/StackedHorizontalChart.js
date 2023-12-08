@@ -36,7 +36,6 @@ const chartCode = `function ChartOptions() {
       getColor('dark'),
       getColor('gray')
 
-
     ],
     tooltip: {
       trigger: 'axis',
@@ -251,7 +250,7 @@ const StackedHorizontalChart = () => {
               } else if (!vehicle.ignition && Number(vehicle.speed) === 0) {
                 stoppedSet.add(vehicle.id);
               } else if (
-                vehicle.speed > vehicle.limit &&
+                (Number (vehicle.speed) > Number(vehicle.limit) ) &&
                 vehicle.ignition == '1'
               ) {
                 rashDrivingSet.add(vehicle.id);
@@ -270,7 +269,7 @@ const StackedHorizontalChart = () => {
             running: running,
             idle: idle,
             stopped: stopped,
-            rashDriving: rashDriving
+            rashDriving: rashDriving,
           });
         });
       });

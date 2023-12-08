@@ -36,9 +36,7 @@ const vehicleIds = dashboardData
       });
     })
   : [];
-
-console.log(vehicleIds);
-
+  
 const getOptions = (month, data) => ({
   color: getColor('gray-100'),
   tooltip: {

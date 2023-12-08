@@ -2733,7 +2733,7 @@
                         "latitude_direction": true,
                         "longitude": 80.2547,
                         "longitude_direction": true,
-                        "speed": 15.0,
+                        "speed": 70.0,
                         "course": 16.0,
                         "num_satellites": "17",
                         "altitude": 18.0,
