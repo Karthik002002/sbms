@@ -30,7 +30,7 @@ const SessionByBrowserChart = ({ chartdata }) => {
     <ReactEChartsCore
       echarts={echarts}
       option={{
-        color: [getColor('primary'), getColor('success'), getColor('info')],
+        color: [getColor('primary'), getColor('success'), getColor('info'), getColor('secondary'), getColor('warning')],
         tooltip: {
           trigger: 'item',
           padding: [7, 10],

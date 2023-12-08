@@ -22,7 +22,7 @@ const VehicleTable = ({ onTrackClick }) => {
         acc.push({
           vehicle_reg_num: vehicle.vehicle_reg,
           school_name: school.school_name,
-          school_code: school.school_code, 
+          school_code: school.school_code,
           latitude: vehicle.latitude,
           longitude: vehicle.longitude
         });
@@ -30,6 +30,7 @@ const VehicleTable = ({ onTrackClick }) => {
     });
     return acc;
   }, []);
+  
   
   
 
@@ -56,7 +57,7 @@ const VehicleTable = ({ onTrackClick }) => {
       }
     },
     {
-      accessor: 'school_name', // Add a new column for school name
+      accessor: 'school_code', // Add a new column for school name
       Header: 'School',
       headerProps: { className: 'pe-1' },
       cellProps: {

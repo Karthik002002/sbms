@@ -11,7 +11,8 @@ import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
 import { tooltipFormatter } from 'helpers/echart-utils';
 import { getColor } from 'helpers/utils';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 echarts.use([
   TitleComponent,
   TooltipComponent,
@@ -219,6 +220,68 @@ const chartCode = `function ChartOptions() {
 `;
 
 const StackedHorizontalChart = () => {
+  const responseData = JSON.parse(sessionStorage.getItem('dashboardData'));
+  const [statusCounts, setStatusCounts] = useState([]);
+  const horizontalCharData = [];
+  useEffect(() => {
+    if (responseData) {
+      const horizontalCharData = [];
+      responseData.forEach(vehicleCompany => {
+        const { vehicleCompany_name, schools } = vehicleCompany;
+
+        schools.forEach(school => {
+          const { school_name, vehicles } = school;
+
+          let running = 0;
+          let idle = 0;
+          let stopped = 0;
+          let rashDriving = 0;
+
+          const runningSet = new Set();
+          const idleSet = new Set();
+          const stoppedSet = new Set();
+          const rashDrivingSet = new Set();
+
+          if (vehicles && vehicles.length > 0) {
+            vehicles.forEach(vehicle => {
+              if (vehicle.ignition && Number(vehicle.speed) > 0) {
+                runningSet.add(vehicle.id);
+              } else if (vehicle.ignition && Number(vehicle.speed) === 0) {
+                idleSet.add(vehicle.id);
+              } else if (!vehicle.ignition && Number(vehicle.speed) === 0) {
+                stoppedSet.add(vehicle.id);
+              } else if (
+                vehicle.speed > vehicle.limit &&
+                vehicle.ignition == '1'
+              ) {
+                rashDrivingSet.add(vehicle.id);
+              }
+            });
+          }
+
+          running = runningSet.size;
+          idle = idleSet.size;
+          stopped = stoppedSet.size;
+          rashDriving = rashDrivingSet.size;
+
+          horizontalCharData.push({
+            company_name: vehicleCompany_name,
+            school_name: school_name,
+            running: running,
+            idle: idle,
+            stopped: stopped,
+            rashDriving: rashDriving
+          });
+        });
+      });
+      console.log(horizontalCharData); // Verify the data structure
+
+      // Perform any further processing or use of horizontalCharData here
+    }
+  }, [responseData]);
+
+  console.log(statusCounts);
+
   return (
     <FalconComponentCard className="h-100">
       <FalconComponentCard.Header

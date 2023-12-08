@@ -40,7 +40,7 @@ const DoughnutRoundedChart = () => {
   // console.log(sessionStorage.getItem('dashboardData'));
 
   let dashboardData = JSON.parse(sessionStorage.getItem('dashboardData')); //recieved the data from the demo data as stored in the local storage 
-  console.log(JSON.parse(sessionStorage.getItem('dashboardData')))
+  
 
   useEffect(() => {
     let runningCount = 0;
@@ -88,15 +88,14 @@ const DoughnutRoundedChart = () => {
       company.schools.forEach(school => {
         school.vehicles.forEach(vehicle => {
           const { id, latitude, longitude } = vehicle;
-          console.log(vehicle.limit, vehicle.speed)
+          
           latLongArray.push({ id, latitude, longitude });
 
-          console.log(latLongArray);
           if (vehicle.ignition == '1' && Number(vehicle.speed) == 0) {
             idleCount++;
           }  else if (vehicle.ignition == '1' && Number (vehicle.speed >= vehicle.limit)) {
             rashDrivingCount++;
-            console.log("true");
+            
           }  else if (vehicle.parked == "0" && vehicle.ignition == "1" && vehicle.speed == 0) {
             parkedCount++;
           } else if (checkNoNetwork() && noNetworkStatus) {
