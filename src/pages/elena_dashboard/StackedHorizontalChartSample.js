@@ -167,7 +167,7 @@ const StackedHorizontalChartSample = () => {
       yAxis: {
         type: 'category',
         data: days,
-        // Other yAxis configurations...
+        axisLabel:{fontSize:10}
       },
       series: seriesData,
       // Other series configurations...

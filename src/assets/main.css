@@ -20,7 +20,7 @@
 }
 
 .invert-hover:hover {
-  filter: invert(0); /* Inverted state on hover */
+  filter: invert(0.8); /* Inverted state on hover */
 }
 
 
@@ -43,7 +43,7 @@
 /*  Tracking page */
 
 .tracking-page-table{
-    height: 75vh;
+    height: 70vh;
     max-height: 80vh;
 }
 
@@ -68,7 +68,7 @@
 
 /* Responsive design  */
 
-@media only screen and (max-width: 1280px){
+@media only screen and (max-width> 1280px){
     nav.navbar-glass.fs--1.navbar-top.navbar.navbar-expand-lg.navbar-light {
         padding: 0px 5px 0px 5px;
       }
@@ -78,7 +78,7 @@
       }
       .leaflet-container {
         width: 100% !important;
-        height: 85vh !important;
+        height: 75vh !important;
         z-index: 1;
     }
 }

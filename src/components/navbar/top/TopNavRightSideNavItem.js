@@ -12,6 +12,7 @@ import { Nav, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import NotificationIcon from './NotificationIcon';
 import NotificationDropdown from 'pages/dashboard/navbar-top/NotificationDropdown';
+import NavBarFilter from './NavBarFilter';
 
 const TopNavRightSideNavItem = () => {
   const {
@@ -30,7 +31,7 @@ const TopNavRightSideNavItem = () => {
       className="navbar-nav-icons ms-auto flex-row align-items-center"
       as="ul"
     >
-      <Flex>
+      {/* <Flex>
         <Form.Select
           size="sm"
           value={company}
@@ -38,15 +39,15 @@ const TopNavRightSideNavItem = () => {
           className="me-2"
         >
           <option value={'All Companies'}>All Companies</option>
-          {/* {loggedInUser.user.companies.map((company, i) => (
+          {loggedInUser.user.companies.map((company, i) => (
             <option value={i} key={company.id}>
               {company.company_name}
             </option>
-          ))} */}
+          ))}
         </Form.Select>
-      </Flex>
+      </Flex> */}
 
-      {company != 'All Companies' &&
+      {/* {company != 'All Companies' &&
       loggedInUser.user.companies[company].schools.length > 0 ? (
         <Flex>
           <Form.Select
@@ -56,14 +57,17 @@ const TopNavRightSideNavItem = () => {
             className="me-2"
           >
             <option value={'All Schools'}>All Schools</option>
-            {/* {loggedInUser.user.companies[company].schools?.map(sch => (
+            {loggedInUser.user.companies[company].schools?.map(sch => (
               <option value={sch.id} key={sch.id}>
                 {sch.name}
               </option>
-            ))} */}
+            ))}
           </Form.Select>
         </Flex>
-      ) : null}
+      ) : null} */}
+
+
+      <NavBarFilter />
 
       <Nav.Item as={'li'}>
         <Nav.Link
@@ -93,7 +97,7 @@ const TopNavRightSideNavItem = () => {
       {/* <NotificationDropdown /> */}
       {/* <NineDotMenu /> */}
       <ProfileDropdown />
-      <NotificationIcon  />
+      <NotificationIcon />
     </Nav>
   );
 };
