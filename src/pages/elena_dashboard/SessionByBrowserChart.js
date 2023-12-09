@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import { PieChart } from 'echarts/charts';
+import { useEffect } from 'react';
 import {
   GridComponent,
   LegendComponent,
@@ -11,7 +12,7 @@ import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
 import { getColor } from 'helpers/utils';
 import { map } from 'leaflet';
-import React from 'react';
+import React, { useState } from 'react';
 // import { propTypes } from 'react-bootstrap/esm/Image';
 
 echarts.use([
@@ -23,14 +24,31 @@ echarts.use([
   LegendComponent
 ]);
 
-
 const SessionByBrowserChart = ({ chartdata }) => {
+  const [centerText, setCenterText] = useState(0);
+
+  useEffect(() => {
+    const data = JSON.parse(sessionStorage.getItem('dashboardData'));
+    let totalCount = 0;
+    data.forEach(vehicleCompany => {
+      vehicleCompany.schools.forEach(school => {
+        totalCount += school.vehicles.length;
+      });
+    });
+    setCenterText(totalCount);
+  }, [centerText]);
 
   return (
     <ReactEChartsCore
       echarts={echarts}
       option={{
-        color: [getColor('primary'), getColor('success'), getColor('info'), getColor('secondary'), getColor('warning')],
+        color: [
+          getColor('primary'),
+          getColor('success'),
+          getColor('info'),
+          getColor('secondary'),
+          getColor('warning')
+        ],
         tooltip: {
           trigger: 'item',
           padding: [7, 10],
@@ -42,7 +60,6 @@ const SessionByBrowserChart = ({ chartdata }) => {
           formatter: params =>
             `<strong>${params.data.name}:</strong> ${params.data.value}`
         },
-
         legend: { show: false },
         series: [
           {
@@ -60,6 +77,32 @@ const SessionByBrowserChart = ({ chartdata }) => {
               scale: false
             },
             data: chartdata
+          },
+          {
+            type: 'pie',
+            radius: ['0%', '10%'],
+            center: window.innerWidth < 580 ? ['50%', '58%'] : ['50%', '50%'],
+            itemStyle: {
+              color: 'transparent',
+              borderColor: 'transparent'
+            },
+            label: {
+              show: true,
+              position: 'center',
+              fontSize: 30,
+              fontWeight: 'bold',
+              formatter: '{a|' + centerText + '}', // Adjust the formatter to display the centerText value
+              rich: {
+                a: {
+                  fontSize: 30,
+                  fontWeight: 'bold',
+                  lineHeight: 10
+                }
+              }
+            },
+            data: [{ value: centerText }],
+            tooltip: { show: true,
+             }
           }
         ]
       }}
@@ -73,5 +116,3 @@ SessionByBrowserChart.propTypes = {
 };
 
 export default SessionByBrowserChart;
-
-

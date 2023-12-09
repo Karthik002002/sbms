@@ -29,12 +29,11 @@ const UsersByCountry = lazy(() => import('./UsersByCountry'));
 import { countryData } from 'data/countryData';
 import StackedHorizontalChartSample from './StackedHorizontalChartSample';
 
-import datas from "../../sampleData/data.json" 
+import datas from '../../sampleData/data.json';
 
 import { sessionByCountry } from 'data/dashboard/analytics';
 
 const AdminDashboard = () => {
-
   // useEffect(() => {
   //   const fetchData = async () => {
   //     try {
@@ -58,11 +57,8 @@ const AdminDashboard = () => {
     window.sessionStorage.setItem('dashboardData', JSON.stringify(datas));
   }, []);
 
-
-  
-  
   return (
-    <div className="container mt-5 ">
+    <div className="container mt-4 ">
       <Row className="my-3">
         <Col md={6} className="mb-5">
           <RealTimeUsers />
@@ -81,8 +77,7 @@ const AdminDashboard = () => {
       </Row> */}
 
       <Row className="mb-5">
-       
-          <DoughnutRoundedChart />
+        <DoughnutRoundedChart />
         {/* <Col md={6} className="mb-5">
           <GradientBarChart />
         </Col>
@@ -119,7 +114,7 @@ const AdminDashboard = () => {
       </Row> */}
 
       <Row className="g-3 my-3">
-        <Customers />
+        <Customers data={datas} />
       </Row>
     </div>
   );

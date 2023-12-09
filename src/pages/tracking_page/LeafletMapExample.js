@@ -60,7 +60,7 @@ const LeafletMapExample = ({ Location }) => {
         : marker.ignition === '1' && Number(marker.speed)
         ? 'running'
         : Number(marker.speed) > 60
-        ? 'rashdriving' // universal overspeeding TODO: implement per vehicle or alert system based
+        ? 'rashdriving' 
         : 'nonetwork';
     }
 

@@ -66,12 +66,12 @@ const TopNavRightSideNavItem = () => {
         </Flex>
       ) : null} */}
 
-
       <NavBarFilter />
 
       <Nav.Item as={'li'}>
         <Nav.Link
-          className="px-2 theme-control-toggle"
+          className="px-2 theme-control-toggle "
+          style={{ height: 50, width: 50 }}
           onClick={() => setConfig('isDark', !isDark)}
         >
           <OverlayTrigger

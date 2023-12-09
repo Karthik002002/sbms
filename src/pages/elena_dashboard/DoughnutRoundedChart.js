@@ -39,8 +39,7 @@ const DoughnutRoundedChart = () => {
 
   // console.log(sessionStorage.getItem('dashboardData'));
 
-  let dashboardData = JSON.parse(sessionStorage.getItem('dashboardData')); //recieved the data from the demo data as stored in the local storage 
-  
+  let dashboardData = JSON.parse(sessionStorage.getItem('dashboardData')); //recieved the data from the demo data as stored in the local storage
 
   useEffect(() => {
     let runningCount = 0;
@@ -54,66 +53,77 @@ const DoughnutRoundedChart = () => {
 
     let latLongArray = [];
 
-    const checkNoNetwork = () => setInterval(() => {
-      latLongArray.forEach(vehicle => {
-        const foundVehicle = dashboardData
-          .flatMap(company => company.schools)
-          .flatMap(school => school.vehicles)
-          .find(v => v.id === vehicle.id);
+    const checkNoNetwork = () =>
+      
+        latLongArray.forEach(vehicle => {
+          const foundVehicle = dashboardData
+            .flatMap(company => company.schools)
+            .flatMap(school => school.vehicles)
+            .find(v => v.id === vehicle.id);
 
-        if (foundVehicle) {
-          const { latitude: newLat, longitude: newLong } = foundVehicle;
-          if (newLat === vehicle.latitude && newLong === vehicle.longitude) {
-            vehicle.noChangeCounter = (vehicle.noChangeCounter || 0) + 1;
+          if (foundVehicle) {
+            const { latitude: newLat, longitude: newLong } = foundVehicle;
+            if (newLat === vehicle.latitude && newLong === vehicle.longitude) {
+              vehicle.noChangeCounter = (vehicle.noChangeCounter || 0) + 1;
 
-            if (vehicle.noChangeCounter === 90) {
-              setNoNetworkStatus(String(true));
+              if (vehicle.noChangeCounter === 10) {
+                setNoNetworkStatus(String(true));
+                console.log("ehll")
+                return true;
+              }
+            } else if (vehicle.noChangeCounter >= 360) {
+              setInActiveStatus(String(true));
+              console.log("1112lk")
               return true;
+            } else {
+              vehicle.latitude = newLat;
+              vehicle.longitude = newLong;
+              vehicle.noChangeCounter = 0;
+              console.log('No');
+              return false;
             }
-          } else if (vehicle.noChangeCounter >= 360) {
-            setInActiveStatus(String(true));
-            return true;
-          } else {
-            vehicle.latitude = newLat;
-            vehicle.longitude = newLong;
-            vehicle.noChangeCounter = 0;
-            console.log('No');
-            return false;
           }
-        }
-      });
-    }, 10 * 1000);
+        });
+
+
+      
 
     dashboardData.forEach(company => {
       company.schools.forEach(school => {
         school.vehicles.forEach(vehicle => {
           const { id, latitude, longitude } = vehicle;
-          
+
           latLongArray.push({ id, latitude, longitude });
-          
+
           if (vehicle.ignition == '1' && Number(vehicle.speed) == 0) {
             idleCount++;
-          }  else if (vehicle.ignition == '1' && Number (vehicle.speed >= vehicle.limit)) {
+          } else if (
+            vehicle.ignition == '1' &&
+            Number(vehicle.speed >= vehicle.limit)
+          ) {
             rashDrivingCount++;
-            
-          }  else if (vehicle.parked == "0" && vehicle.ignition == "1" && vehicle.speed == 0) {
+          } else if (
+            vehicle.parked == '0' &&
+            vehicle.ignition == '1' &&
+            vehicle.speed == 0
+          ) {
             parkedCount++;
           } else if (checkNoNetwork() && noNetworkStatus) {
             noNetworkCount++;
           } else if (checkNoNetwork() && inActiveStatus) {
             inActiveCount++;
-          }else if (vehicle.ignition !== '1' && Number(vehicle.speed) == 0) {
+          } else if (vehicle.ignition !== '1' && Number(vehicle.speed) == 0) {
             stoppedCount++;
           } else if (vehicle.ignition == '1' && Number(vehicle.speed) > 0) {
             runningCount++;
-          }else if (vehicle.ignition == '0' && Number(vehicle.speed) >= 0) {
+          } else if (vehicle.ignition == '0' && Number(vehicle.speed) >= 0) {
             towingCount++;
-          } 
+          }
         });
       });
     });
     console.log('Doughnut Loading');
-
+    const intervalId = setInterval(checkNoNetwork, 1000)
     // console.log(Running: ${runningCount});
     // console.log(Idle: ${idleCount});
     // console.log(Stopped: ${stoppedCount});
@@ -127,7 +137,10 @@ const DoughnutRoundedChart = () => {
     setNoNetwork(noNetworkCount);
     setInActive(inActiveCount);
     // setInactive(inactiveCount)
-  });
+
+    return () => clearInterval(intervalId);
+   
+  },[running, stopped, idle, rashDriving, towing, parked, noNetwork, inActive ]);
   const chartCode = `function ChartOptions() {
     const chartRef = useRef(null)
     const isMobile = window.innerWidth < 992;
@@ -217,6 +230,7 @@ const DoughnutRoundedChart = () => {
             
           ]
         },
+        
         
       ],
       tooltip: {

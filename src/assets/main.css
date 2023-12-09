@@ -1,16 +1,15 @@
 /* Navbar  */
 
-.navbar-background-color{
-  color: white ; 
+.navbar-background-color {
+  color: white;
 }
 
-
 /* Notification bell */
-.notification-bell{
+.notification-bell {
   position: relative;
 }
 
-.notification-bell-hov:hover{
+.notification-bell-hov:hover {
   filter: invert(1);
 }
 
@@ -23,8 +22,7 @@
   filter: invert(0.8); /* Inverted state on hover */
 }
 
-
-.notification-counter{
+.notification-counter {
   position: relative;
   vertical-align: top;
   /* z-index: 10; */
@@ -32,85 +30,117 @@
   font-size: smaller;
 }
 
-
 /* sessionbybrowser component in AdminDashboard */
-.bus-count-overview{
+.bus-count-overview {
   max-height: 20vh !important;
 }
 
 
+/* Daily KM report AdminDashboard */
 
+.dropdown-menu-height {
+  max-height: 200px; 
+  overflow-y: auto; 
+}
 /*  Tracking page */
 
-.tracking-page-table{
-    height: 70vh;
-    max-height: 80vh;
+.tracking-page-table {
+  height: 70vh;
+  max-height: 80vh;
 }
 
-.track-btn-button{
+.track-btn-button {
   padding-top: 0.1rem !important;
 }
 
 .row > * {
-    flex-shrink: 0;
-    width: 100%;
-    max-width: 100%;
-    padding-right: calc(var(--falcon-gutter-x) * 0.5);
-    padding-left: 0px !important;
-    margin-top: var(--falcon-gutter-y);
-  }
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-right: calc(var(--falcon-gutter-x) * 0.5);
+  padding-left: 0px !important;
+  margin-top: var(--falcon-gutter-y);
+}
 
-  .content {
-    padding-bottom: 1rem !important;
-  }
-
-
+.content {
+  padding-bottom: 1rem !important;
+}
 
 /* Responsive design  */
 
-@media only screen and (max-width> 1280px){
-    nav.navbar-glass.fs--1.navbar-top.navbar.navbar-expand-lg.navbar-light {
-        padding: 0px 5px 0px 5px;
-      }
-
-      .container, .container-lg, .container-md, .container-sm, .container-xl{
-        max-width: unset !important;
-      }
-      .leaflet-container {
-        width: 100% !important;
-        height: 75vh !important;
-        z-index: 1;
-    }
-}
-
-@media (min-width: 1200px){
-  .container, .container-lg, .container-md, .container-sm, .container-xl {
-      max-width: none !important;
+@media only screen and (max-width> 1280px) {
+  nav.navbar-glass.fs--1.navbar-top.navbar.navbar-expand-lg.navbar-light {
+    padding: 0px 5px 0px 5px;
   }
 
-  
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: unset !important;
   }
-
-  @media only screen and (max-width:1024px){
-    .tracking-page-table{
-        max-height: 60vh;
-        font-size: 10px !important;
-    }
-    .card-header{
-      padding: 5px !important;
-    }
-    .card-body{
-      padding: 4px !important;
-    }
-    .card-header, .card-body{
-      font-size: 10px !important;
-    }
-
-
+  .leaflet-container {
+    width: 100% !important;
+    height: 75vh !important;
+    z-index: 1;
+  }
 }
 
-@media only screen and (max-width:768px){
-  .card-header, .card-body{
+@media (min-width: 1200px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: unset !important;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .tracking-page-table {
+    max-height: 60vh;
     font-size: 10px !important;
+  }
+  .card-header {
+    padding: 5px !important;
+  }
+  .card-body {
+    padding: 4px !important;
+  }
+  .card-header,
+  .card-body {
+    font-size: 10px !important;
+  }
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: unset !important;
+  }
+}
+
+@media only screen and (max-width: 990px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: unset !important;
+  }
+}
+
+@media only screen and (max-width: 765px) {
+  .card-header,
+  .card-body {
+    font-size: 10px !important;
+  }
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: none !important;
   }
 }

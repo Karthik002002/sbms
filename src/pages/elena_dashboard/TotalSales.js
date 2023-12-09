@@ -142,12 +142,12 @@ const TotalSales = ({ data }) => {
         titleTag="h5"
         className="pb-0 ms-3"
         endEl={
-          <Flex>
+          <Flex className="h-50">
             <Form.Select
               size="sm"
               value={selectedVehicleId}
               onChange={e => setSelectedVehicleId(e.target.value)}
-              className="me-2"
+              className="me-2 dropdown-menu-height"
             >
               <option value="">Select Vehicle ID</option>
               {vehicleIds.map((id, index) => (
