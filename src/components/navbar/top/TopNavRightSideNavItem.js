@@ -14,6 +14,7 @@ import NotificationIcon from './NotificationIcon';
 import NotificationDropdown from 'pages/dashboard/navbar-top/NotificationDropdown';
 import NavBarFilter from './NavBarFilter';
 
+
 const TopNavRightSideNavItem = () => {
   const {
     config: { isDark, isRTL },
@@ -65,9 +66,9 @@ const TopNavRightSideNavItem = () => {
           </Form.Select>
         </Flex>
       ) : null} */}
-
-      <NavBarFilter />
-
+      
+        <NavBarFilter />
+      
       <Nav.Item as={'li'}>
         <Nav.Link
           className="px-2 theme-control-toggle "

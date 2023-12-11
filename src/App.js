@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import is from 'is_js';
 import AppContext from 'context/Context';
-import FalconRoutes from 'routes';
+import FalconRoutes from 'routes/indexOne';
 import { CloseButton } from 'components/common/Toast';
 // import SettingsToggle from 'components/settings-panel/SettingsToggle';
 // import SettingsPanel from 'components/settings-panel/SettingsPanel';

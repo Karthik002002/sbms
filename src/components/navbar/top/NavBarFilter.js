@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap'; // Assuming you're using React-Bootstrap
 import IconButton from 'components/common/IconButton';
+import { useFilterContext } from 'context/FilterContext';
 
 const NavBarFilter = () => {
   const [showModal, setShowModal] = useState(false);
@@ -10,8 +11,20 @@ const NavBarFilter = () => {
 
   const data = JSON.parse(sessionStorage.getItem('dashboardData'));
 
+  const { setSelectedFilter } = useFilterContext();
+
   const handleShowModal = () => setShowModal(true);
+
   const handleCloseModal = () => {
+
+    const filterData = {
+      company: selectedCompany || null,
+      school: selectedSchool || null,
+      vehicle: selectedVehicle || null,
+    };
+
+    setSelectedFilter(filterData);
+
     setShowModal(false);
     setSelectedCompany(null);
     setSelectedSchool(null);

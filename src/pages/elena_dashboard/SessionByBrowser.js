@@ -6,10 +6,13 @@ import Flex from 'components/common/Flex';
 import SessionByBrowserChart from './SessionByBrowserChart';
 import TableRow from './TableRow';
 import { useEffect } from 'react';
+import { useFilterContext } from 'context/FilterContext';
+
 
 const SessionByBrowser = () => {
   const [chartData, setChartData] = useState([]);
-
+  const { selectedFilter } = useFilterContext();
+  
   useEffect(() => {
     // fetch('https://sbmsadmin.elenageosys.com/vehicle-management/doughnutchart/', {
     //   headers: {
@@ -24,23 +27,72 @@ const SessionByBrowser = () => {
     //   .catch(err => console.error(err));
 
     let dashboardData = JSON.parse(sessionStorage.getItem('dashboardData'));
-
+    console.log(selectedFilter)
+    let filteredData = dashboardData;
+    let totalBusPerCompany = 0;
     let temp = [];
-    if (dashboardData) {
-      dashboardData.forEach(company => {
-        let total_bus = 0;
-        company.schools.forEach(school => {
-          total_bus = total_bus + school.vehicles.length;
-          
-            temp.push({ name: school.school_name, value: school.vehicles.length });
-          
-        });
+    filteredData.forEach(company => {
         
-        console.log(company.vehicle)
+    
+      company.schools.forEach(school => {
+        totalBusPerCompany += school.vehicles.length;
       });
+      
+      temp.push({
+        name: company.vehicleCompany_name,
+        value: totalBusPerCompany
+      });
+    });
+
+    if (dashboardData) {
+      
+    
+      
+      if (selectedFilter.company) {
+        filteredData = filteredData.filter(
+          company => company.vehicleCompany_name === selectedFilter.company
+
+        );
+      }
+    
+      
+      if (selectedFilter.school) {
+        filteredData = filteredData.map(company => ({
+          ...company,
+          schools: company.schools.filter(
+            school => school.school_name === selectedFilter.school
+          )
+        }));
+      }
+    
+      
+      if (selectedFilter.vehicle) {
+        filteredData = filteredData.map(company => ({
+          ...company,
+          schools: company.schools.map(school => ({
+            ...school,
+            vehicles: school.vehicles.filter(
+              vehicle => vehicle.id === selectedFilter.vehicle
+            )
+          }))
+        }));
+      }
+    
+      let temp = [];
+      filteredData.forEach(company => {
+        company.schools.forEach(school => {
+          totalBusPerCompany += school.vehicles.length;
+        });
+        temp.push({
+          name: company.vehicleCompany_name,
+          value: totalBusPerCompany
+        });
+      });
+    
       setChartData(temp);
+      totalBusPerCompany = 0;
     }
-  }, []);
+  }, [selectedFilter]);
 
   return (
     <Card className="h-100">

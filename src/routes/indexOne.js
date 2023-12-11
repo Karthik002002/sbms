@@ -12,6 +12,7 @@ import ErrorLayout from '../layouts/ErrorLayout';
 // import TrackingPage from 'pages/tracking_page/TrackingPage';
 // import VehicleDashboard from 'pages/dashboard/VehicleDashboard';
 import AdminDashboard from 'pages/elena_dashboard/AdminDashboard';
+import { FilterProvider } from 'context/FilterContext';
 
 // const Landing = lazy(() => import('components/pages/landing/Landing'));
 const Error404 = lazy(() => import('components/errors/Error404'));
@@ -38,6 +39,7 @@ const FalconRoutes = () => {
     window.location.href = '/login';
 
   return (
+    <FilterProvider>
     <Routes>
       {/* <Route
         path="/landing"
@@ -95,6 +97,7 @@ const FalconRoutes = () => {
       />
 
       {/*- ------------- Dashboard ---------------------------  */}
+   
       <Route element={<MainLayout />}>
         <Route
           path="/dashboard"
@@ -136,6 +139,7 @@ const FalconRoutes = () => {
         }
       />
     </Routes>
+    </FilterProvider>
   );
 };
 
