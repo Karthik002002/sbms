@@ -1,5 +1,3 @@
-//Doughnutchart.js
-
 import FalconComponentCard from 'components/common/FalconComponentCard';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import { PieChart } from 'echarts/charts';
@@ -13,6 +11,7 @@ import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
 import { getColor } from 'helpers/utils';
 import VehicleDashboard from 'pages/dashboard/VehicleDashboard';
+import { useFilterContext } from 'context/FilterContext';
 import React, { useEffect, useState } from 'react';
 echarts.use([
   TitleComponent,
@@ -37,7 +36,7 @@ const DoughnutRoundedChart = () => {
   const [inActiveStatus, setInActiveStatus] = useState(false);
   // const [inactive, setInactive] = useState()
 
-  // console.log(sessionStorage.getItem('dashboardData'));
+  const { selectedFilter } = useFilterContext();
 
   let dashboardData = JSON.parse(sessionStorage.getItem('dashboardData')); //recieved the data from the demo data as stored in the local storage
 
@@ -52,78 +51,116 @@ const DoughnutRoundedChart = () => {
     let inActiveCount = 0;
 
     let latLongArray = [];
+    function checkVehicleStatus(vehicle) {
+      if (vehicle.ignition == '1' && Number(vehicle.speed) == 0) {
+        idleCount++;
+      } else if (
+        vehicle.ignition == '1' &&
+        Number(vehicle.speed) >= vehicle.limit
+      ) {
+        rashDrivingCount++;
+      } else if (
+        vehicle.parked == '0' &&
+        vehicle.ignition == '1' &&
+        vehicle.speed == 0
+      ) {
+        parkedCount++;
+      } else if (checkNoNetwork() && noNetworkStatus) {
+        noNetworkCount++;
+      } else if (checkNoNetwork() && inActiveStatus) {
+        inActiveCount++;
+      } else if (vehicle.ignition !== '1' && Number(vehicle.speed) == 0) {
+        stoppedCount++;
+      } else if (vehicle.ignition == '1' && Number(vehicle.speed) > 0) {
+        runningCount++;
+      } else if (vehicle.ignition == '0' && Number(vehicle.speed) >= 0) {
+        towingCount++;
+      }
+    }
 
     const checkNoNetwork = () =>
-      
-        latLongArray.forEach(vehicle => {
-          const foundVehicle = dashboardData
-            .flatMap(company => company.schools)
-            .flatMap(school => school.vehicles)
-            .find(v => v.id === vehicle.id);
+      latLongArray.forEach(vehicle => {
+        const foundVehicle = dashboardData
+          .flatMap(company => company.schools)
+          .flatMap(school => school.vehicles)
+          .find(v => v.id === vehicle.id);
 
-          if (foundVehicle) {
-            const { latitude: newLat, longitude: newLong } = foundVehicle;
-            if (newLat === vehicle.latitude && newLong === vehicle.longitude) {
-              vehicle.noChangeCounter = (vehicle.noChangeCounter || 0) + 1;
+        if (foundVehicle) {
+          const { latitude: newLat, longitude: newLong } = foundVehicle;
+          if (newLat === vehicle.latitude && newLong === vehicle.longitude) {
+            vehicle.noChangeCounter = (vehicle.noChangeCounter || 0) + 1;
 
-              if (vehicle.noChangeCounter === 10) {
-                setNoNetworkStatus(String(true));
-                console.log("ehll")
-                return true;
-              }
-            } else if (vehicle.noChangeCounter >= 360) {
-              setInActiveStatus(String(true));
-              console.log("1112lk")
+            if (vehicle.noChangeCounter === 10) {
+              setNoNetworkStatus(String(true));
               return true;
-            } else {
-              vehicle.latitude = newLat;
-              vehicle.longitude = newLong;
-              vehicle.noChangeCounter = 0;
-              console.log('No');
-              return false;
             }
+          } else if (vehicle.noChangeCounter >= 360) {
+            setInActiveStatus(String(true));
+            return true;
+          } else {
+            vehicle.latitude = newLat;
+            vehicle.longitude = newLong;
+            vehicle.noChangeCounter = 0;
+            console.log('No');
+            return false;
           }
+        }
+      });
+
+    if (selectedFilter.company == null) {
+      dashboardData.forEach(company => {
+        company.schools.forEach(school => {
+          school.vehicles.forEach(vehicle => {
+            const { id, latitude, longitude } = vehicle;
+
+            latLongArray.push({ id, latitude, longitude });
+
+            checkVehicleStatus(vehicle);
+          });
         });
+      });
+    } else if (
+      selectedFilter &&
+      selectedFilter.company !== null &&
+      selectedFilter.school !== null
+    ) {
+      const filteredData = dashboardData.filter(
+        company => company.vehicleCompany_name === selectedFilter.company
+      );
 
-
-      
-
-    dashboardData.forEach(company => {
-      company.schools.forEach(school => {
-        school.vehicles.forEach(vehicle => {
-          const { id, latitude, longitude } = vehicle;
-
-          latLongArray.push({ id, latitude, longitude });
-
-          if (vehicle.ignition == '1' && Number(vehicle.speed) == 0) {
-            idleCount++;
-          } else if (
-            vehicle.ignition == '1' &&
-            Number(vehicle.speed >= vehicle.limit)
-          ) {
-            rashDrivingCount++;
-          } else if (
-            vehicle.parked == '0' &&
-            vehicle.ignition == '1' &&
-            vehicle.speed == 0
-          ) {
-            parkedCount++;
-          } else if (checkNoNetwork() && noNetworkStatus) {
-            noNetworkCount++;
-          } else if (checkNoNetwork() && inActiveStatus) {
-            inActiveCount++;
-          } else if (vehicle.ignition !== '1' && Number(vehicle.speed) == 0) {
-            stoppedCount++;
-          } else if (vehicle.ignition == '1' && Number(vehicle.speed) > 0) {
-            runningCount++;
-          } else if (vehicle.ignition == '0' && Number(vehicle.speed) >= 0) {
-            towingCount++;
+      filteredData.forEach(company => {
+        company.schools.forEach(school => {
+          if (school.school_name === selectedFilter.school) {
+            school.vehicles.forEach(vehicle => {
+              checkVehicleStatus(vehicle);
+            });
           }
         });
       });
-    });
+    } else if (selectedFilter && selectedFilter.company !== null) {
+      const filteredData = dashboardData.filter(
+        company => company.vehicleCompany_name === selectedFilter.company
+      );
+
+      filteredData.forEach(company => {
+        company.schools.forEach(school => {
+          school.vehicles.forEach(vehicle => {
+            checkVehicleStatus(vehicle);
+          });
+        });
+      });
+
+      // Functions to check vehicle status
+
+      // Function to check network status
+      function checkNoNetwork() {
+        // Define your logic for checking network status
+        // Return true or false based on the condition
+      }
+    }
+
     console.log('Doughnut Loading');
-    const intervalId = setInterval(checkNoNetwork, 1000)
+    const intervalId = setInterval(checkNoNetwork, 1000);
     // console.log(Running: ${runningCount});
     // console.log(Idle: ${idleCount});
     // console.log(Stopped: ${stoppedCount});
@@ -139,8 +176,17 @@ const DoughnutRoundedChart = () => {
     // setInactive(inactiveCount)
 
     return () => clearInterval(intervalId);
-   
-  },[running, stopped, idle, rashDriving, towing, parked, noNetwork, inActive ]);
+  }, [
+    running,
+    stopped,
+    idle,
+    rashDriving,
+    towing,
+    parked,
+    noNetwork,
+    inActive,
+    selectedFilter
+  ]);
   const chartCode = `function ChartOptions() {
     const chartRef = useRef(null)
     const isMobile = window.innerWidth < 992;

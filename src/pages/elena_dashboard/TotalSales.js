@@ -28,7 +28,6 @@ echarts.use([
 ]);
 
 let dashboardData = JSON.parse(sessionStorage.getItem('dashboardData'));
-console.log(dashboardData);
 const vehicleIds = dashboardData
   ? dashboardData.flatMap(company => {
       return company.schools.flatMap(school => {

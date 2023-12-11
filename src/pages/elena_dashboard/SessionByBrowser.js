@@ -8,11 +8,10 @@ import TableRow from './TableRow';
 import { useEffect } from 'react';
 import { useFilterContext } from 'context/FilterContext';
 
-
 const SessionByBrowser = () => {
   const [chartData, setChartData] = useState([]);
   const { selectedFilter } = useFilterContext();
-  
+
   useEffect(() => {
     // fetch('https://sbmsadmin.elenageosys.com/vehicle-management/doughnutchart/', {
     //   headers: {
@@ -27,17 +26,16 @@ const SessionByBrowser = () => {
     //   .catch(err => console.error(err));
 
     let dashboardData = JSON.parse(sessionStorage.getItem('dashboardData'));
-    console.log(selectedFilter)
-    let filteredData = dashboardData;
+    let storedData = dashboardData;
     let totalBusPerCompany = 0;
     let temp = [];
-    filteredData.forEach(company => {
-        
-    
+
+    storedData.forEach(company => {
+      let totalBusPerCompany = 0;
       company.schools.forEach(school => {
         totalBusPerCompany += school.vehicles.length;
       });
-      
+
       temp.push({
         name: company.vehicleCompany_name,
         value: totalBusPerCompany
@@ -45,50 +43,26 @@ const SessionByBrowser = () => {
     });
 
     if (dashboardData) {
-      
-    
-      
       if (selectedFilter.company) {
-        filteredData = filteredData.filter(
+        totalBusPerCompany = 0;
+        storedData = storedData.filter(
           company => company.vehicleCompany_name === selectedFilter.company
-
         );
-      }
-    
-      
-      if (selectedFilter.school) {
-        filteredData = filteredData.map(company => ({
-          ...company,
-          schools: company.schools.filter(
-            school => school.school_name === selectedFilter.school
-          )
-        }));
-      }
-    
-      
-      if (selectedFilter.vehicle) {
-        filteredData = filteredData.map(company => ({
-          ...company,
-          schools: company.schools.map(school => ({
-            ...school,
-            vehicles: school.vehicles.filter(
-              vehicle => vehicle.id === selectedFilter.vehicle
-            )
-          }))
-        }));
-      }
-    
-      let temp = [];
-      filteredData.forEach(company => {
-        company.schools.forEach(school => {
-          totalBusPerCompany += school.vehicles.length;
+
+        storedData.forEach(company => {
+          company.schools.forEach(school => {
+            setChartData([]);
+            totalBusPerCompany += school.vehicles.length;
+            temp = [];
+            temp.push({
+              name: company.vehicleCompany_name,
+              value: totalBusPerCompany
+            });
+            setChartData(temp);
+          });
         });
-        temp.push({
-          name: company.vehicleCompany_name,
-          value: totalBusPerCompany
-        });
-      });
-    
+      }
+
       setChartData(temp);
       totalBusPerCompany = 0;
     }

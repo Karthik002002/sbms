@@ -11,16 +11,19 @@ import { Link } from 'react-router-dom';
 import AdvanceTable from 'components/common/advance-table/AdvanceTable';
 import tableLocationMarker from 'assets/img/icons/map-marker.png';
 import React from 'react';
+import { useState, useEffect } from 'react';
 import historyLogo from '../../assets/img/icons/history-logo.png';
 
 const VehicleTable = ({ onTrackClick }) => {
+  
+
   const responseData = JSON.parse(sessionStorage.getItem('dashboardData'));
 
   const tableData = responseData.reduce((acc, curr) => {
     curr.schools.forEach(school => {
       school.vehicles.forEach(vehicle => {
         acc.push({
-          vehicle_reg_num: vehicle.vehicle_reg,
+          vehicle_reg: vehicle.vehicle_reg,
           school_name: school.school_name,
           school_code: school.school_code,
           latitude: vehicle.latitude,
@@ -30,9 +33,6 @@ const VehicleTable = ({ onTrackClick }) => {
     });
     return acc;
   }, []);
-  
-  
-  
 
   console.log(tableData)
 
@@ -42,7 +42,7 @@ const VehicleTable = ({ onTrackClick }) => {
 
   const columns = [
     {
-      accessor: 'vehicle_reg_num',
+      accessor: 'vehicle_reg',
       Header: 'Vehicle',
       headerProps: { className: '' },
       cellProps: {

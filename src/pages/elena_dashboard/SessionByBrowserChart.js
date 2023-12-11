@@ -13,6 +13,7 @@ import { CanvasRenderer } from 'echarts/renderers';
 import { getColor } from 'helpers/utils';
 import { map } from 'leaflet';
 import React, { useState } from 'react';
+import { useFilterContext } from 'context/FilterContext';
 // import { propTypes } from 'react-bootstrap/esm/Image';
 
 echarts.use([
@@ -26,17 +27,41 @@ echarts.use([
 
 const SessionByBrowserChart = ({ chartdata }) => {
   const [centerText, setCenterText] = useState(0);
+  const { selectedFilter } = useFilterContext();
 
   useEffect(() => {
     const data = JSON.parse(sessionStorage.getItem('dashboardData'));
+    let storedData = data;
     let totalCount = 0;
-    data.forEach(vehicleCompany => {
+    storedData.forEach(vehicleCompany => {
       vehicleCompany.schools.forEach(school => {
         totalCount += school.vehicles.length;
       });
+      setCenterText(totalCount);
     });
-    setCenterText(totalCount);
-  }, [centerText]);
+    
+    if (data) {
+      if (selectedFilter.company) {
+        let totalCount = 0; // Initialize total count
+    
+        storedData = storedData.filter(
+          company => company.vehicleCompany_name === selectedFilter.company
+        );
+    
+        storedData.forEach(company => {
+          company.schools.forEach(school => {
+            totalCount += school.vehicles.length; // Accumulate the count
+            console.log(totalCount); // Log for verification (optional)
+          });
+        });
+    
+        setCenterText(totalCount); // Set the center text with the total count
+      }
+    }
+    
+
+    
+  }, [centerText, selectedFilter ]);
 
   return (
     <ReactEChartsCore
@@ -91,7 +116,7 @@ const SessionByBrowserChart = ({ chartdata }) => {
               position: 'center',
               fontSize: 30,
               fontWeight: 'bold',
-              formatter: '{a|' + centerText + '}', // Adjust the formatter to display the centerText value
+              formatter: '{a|' + centerText + '}', 
               rich: {
                 a: {
                   fontSize: 30,
@@ -102,7 +127,9 @@ const SessionByBrowserChart = ({ chartdata }) => {
             },
             data: [{ value: centerText }],
             tooltip: { show: true,
-             }
+              formatter: function (params) {
+                return 'Total vehicle count: ' + centerText; // Adjust the format here
+              }}
           }
         ]
       }}

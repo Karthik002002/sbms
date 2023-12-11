@@ -10,34 +10,83 @@ import AdvanceTableWrapper from 'components/common/advance-table/AdvanceTableWra
 import CustomersTableHeader from './CustomersTableHeader';
 import AdvanceTablePagination from 'components/common/advance-table/AdvanceTablePagination';
 import AdvanceTable from 'components/common/advance-table/AdvanceTable';
+import { useFilterContext } from 'context/FilterContext';
+
 
 const Customers = () => {
   const [customers, setCustomers] = useState([]);
-  const [tableData, setTableData] = useState([])
+  const [tableData, setTableData] = useState([]);
+  const {selectedFilter} = useFilterContext()
   //using the data from the local storage
  
   useEffect(() => {
     const data = window.sessionStorage.getItem('dashboardData');
-    if (data) {
+  
+    const processDashboardData = (data) => {
       const parsedData = JSON.parse(data);
       setCustomers(parsedData);
-      // Process data here
-      const newData = parsedData.reduce((acc, company) => {
-        company.schools.forEach(school => {
-          school.vehicles.forEach(vehicle => {
-            acc.push({
-              vehicle_reg: vehicle.vehicle_reg,
-              school_name: school.school_name,
-              driver: vehicle.driver,
-              phone: vehicle.phone,
+  
+      if (!selectedFilter || selectedFilter.company === null) {
+        
+        const newData = parsedData.reduce((acc, company) => {
+          company.schools.forEach(school => {
+            school.vehicles.forEach(vehicle => {
+              acc.push({
+                vehicle_reg: vehicle.vehicle_reg,
+                school_name: school.school_name,
+                driver: vehicle.driver,
+                phone: vehicle.phone,
+              });
             });
           });
-        });
-        return acc;
-      }, []);
-      setTableData(newData);
+          return acc;
+        }, []);
+        setTableData(newData);
+      } else if (selectedFilter && selectedFilter.company !== null && selectedFilter.school === null) {
+        
+        const filteredData = parsedData.filter(company => company.vehicleCompany_name === selectedFilter.company);
+        const newData = filteredData.reduce((acc, company) => {
+          company.schools.forEach(school => {
+            school.vehicles.forEach(vehicle => {
+              acc.push({
+                vehicle_reg: vehicle.vehicle_reg,
+                school_name: school.school_name,
+                driver: vehicle.driver,
+                phone: vehicle.phone,
+              });
+            });
+          });
+          return acc;
+        }, []);
+        setTableData(newData);
+      } else if (selectedFilter && selectedFilter.company !== null && selectedFilter.school !== null) {
+        const filteredData = parsedData.filter(company => company.vehicleCompany_name === selectedFilter.company);
+        const newData = filteredData.reduce((acc, company) => {
+          company.schools.forEach(school => {
+            if (school.school_name === selectedFilter.school) {
+              school.vehicles.forEach(vehicle => {
+                acc.push({
+                  vehicle_reg: vehicle.vehicle_reg,
+                  school_name: school.school_name,
+                  driver: vehicle.driver,
+                  phone: vehicle.phone,
+                });
+              });
+            }
+          });
+          return acc;
+        }, []);
+        setTableData(newData);
+      }
+    };
+  
+    if (data) {
+      processDashboardData(data);
     }
-  }, []);
+  }, [selectedFilter]);
+  
+  
+  
  
   
 
