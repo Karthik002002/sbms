@@ -12,181 +12,50 @@ import AdvanceTable from 'components/common/advance-table/AdvanceTable';
 import tableLocationMarker from 'assets/img/icons/map-marker.png';
 import React, { useEffect, useState } from 'react';
 import historyLogo from '../../assets/img/icons/history-logo.png';
-import { useFilterContext } from 'context/FilterContext';
 
-const VehicleTable = ({ onTrackClick }) => {
-  const { selectedFilter } = useFilterContext();
-  const [trackingTableData, setTrackingTableData] = useState([]);
-  const [customers, setCustomers] = useState([]);
-  const [updatedTableData, setUpdatedTableData] = useState([])
+const VehicleTable = ({ onTrackClick , data}) => {
+  const responseData = JSON.parse(sessionStorage.getItem('dashboardData'));
+  console.log(data)
+  // const [tableData, setTableData] = useState([])
+  
+  // const transformData = (data) => {
+  //   return data.map((item) => ({
+  //     vehicle_reg_num: item.reg_no,
+  //     latitude: item.lat,
+  //     longitude: item.lon
+  //   }));
+  // };
 
-  useEffect(() => {
-    const data = window.sessionStorage.getItem('dashboardData');
+ 
 
-    const processDashboardData = data => {
-      const parsedData = JSON.parse(data);
-      setCustomers(parsedData);
+  // useEffect(()=>{
+  //   const FirstData = transformData(data)
+  //   setTableData(FirstData)
+  // },[data])
 
-      if (selectedFilter && selectedFilter.company === null) {
-        const newData = parsedData.reduce((acc, company) => {
-          company.schools.forEach(school => {
-            school.vehicles.forEach(vehicle => {
-              acc.push({
-                vehicle_reg: vehicle.vehicle_reg,
-                school_code: school.school_code,
-                latitude: vehicle.latitude,
-                longitude: vehicle.longitude
-              });
-            });
-          });
-          return acc;
-        }, []);
-        setUpdatedTableData(newData);
-        setTrackingTableData(newData);
-      }
-    };
+  const tableData = responseData.reduce((acc, curr) => {
+    curr.schools.forEach(school => {
+      school.vehicles.forEach(vehicle => {
+        acc.push({
+          vehicle_reg_num: vehicle.vehicle_reg,
+          school_name: school.school_name,
+          school_code: school.school_code,
+          latitude: vehicle.latitude,
+          longitude: vehicle.longitude
+        });
+      });
+    });
+    return acc;
+  }, []);
 
-    if (data !== null) {
-      processDashboardData(data);
-    }
-
-
-    if (trackingTableData !== null){
-      setUpdatedTableData(trackingTableData)
-    }
-  }, [selectedFilter]);
-  // else if (
-  //   selectedFilter &&
-  //   selectedFilter.company !== null &&
-  //   selectedFilter.school === null
-  // ) {
-  //   const filteredData = parsedData.filter(
-  //     company => company.vehicleCompany_name === selectedFilter.company
-  //   );
-  //   const newData = filteredData.reduce((acc, company) => {
-  //     company.schools.forEach(school => {
-  //       school.vehicles.forEach(vehicle => {
-  //         acc.push({
-  //           vehicle_reg: vehicle.vehicle_reg,
-  //           school_code: school.school_code,
-  //           latitude: vehicle.latitude,
-  //           longitude: vehicle.longitude
-  //         });
-  //       });
-  //     });
-  //     return acc;
-  //   }, []);
-  //   setTrackingTableData(newData);
-  // } else if (
-  //   selectedFilter &&
-  //   selectedFilter.company !== null &&
-  //   selectedFilter.school !== null
-  // ) {
-  //   const filteredData = parsedData.filter(
-  //     company => company.vehicleCompany_name === selectedFilter.company
-  //   );
-  //   const newData = filteredData.reduce((acc, company) => {
-  //     company.schools.forEach(school => {
-  //       if (school.school_name === selectedFilter.school) {
-  //         school.vehicles.forEach(vehicle => {
-  //           acc.push({
-  //             vehicle_reg: vehicle.vehicle_reg,
-  //             school_code: school.school_code,
-  //             latitude: vehicle.latitude,
-  //             longitude: vehicle.longitude
-  //           });
-  //         });
-  //       }
-  //     });
-  //     return acc;
-  //   }, []);
-  //   console.log(newData)
-  //   setTrackingTableData(newData);
-  // }
-
-  useEffect(() => {
-    
-      setUpdatedTableData(trackingTableData);
-        
-  }, [trackingTableData]);
-
-  // useEffect(() => {
-  //   const responseData = JSON.parse(sessionStorage.getItem('dashboardData'));
-  //   setTableData(responseData)
-  // }, []);
-
-  // rendering with the condition changes dynmaically
-
-  // useEffect(() => {
-  //   const data = window.sessionStorage.getItem('dashboardData');
-
-  //   const processDashboardData = (data) => {
-  //     const parsedData = JSON.parse(data);
-
-  //     if (!selectedFilter || selectedFilter.company === null) {
-  //       const newData = parsedData.flatMap(company =>
-  //         company.schools.flatMap(school =>
-  //           school.vehicles.map(vehicle => ({
-  //             vehicle_reg: vehicle.vehicle_reg,
-  //             school_name: school.school_name,
-  //             driver: vehicle.driver,
-  //             phone: vehicle.phone,
-  //           }))
-  //         )
-  //       );
-  //       setTableData(newData);
-  //     } else {
-  //       const filteredData = parsedData.filter(company => company.vehicleCompany_name === selectedFilter.company);
-
-  //       if (selectedFilter.school === null) {
-  //         const newData = filteredData.flatMap(company =>
-  //           company.schools.flatMap(school =>
-  //             school.vehicles.map(vehicle => ({
-  //               vehicle_reg: vehicle.vehicle_reg,
-  //               school_name: school.school_name,
-  //               driver: vehicle.driver,
-  //               phone: vehicle.phone,
-  //             }))
-  //           )
-  //         );
-  //         setTableData(newData);
-  //       } else {
-  //         const newData = filteredData.flatMap(company =>
-  //           company.schools
-  //             .filter(school => school.school_name === selectedFilter.school)
-  //             .flatMap(school =>
-  //               school.vehicles.map(vehicle => ({
-  //                 vehicle_reg: vehicle.vehicle_reg,
-  //                 school_name: school.school_name,
-  //                 driver: vehicle.driver,
-  //                 phone: vehicle.phone,
-  //               }))
-  //             )
-  //         );
-  //         setTableData(newData);
-  //       }
-  //     }
-  //   };
-
-  //   if (data) {
-  //     processDashboardData(data);
-  //   }
-  // }, [selectedFilter]);
-  useEffect(() => {
-    
-    if (updatedTableData.length !== 0) {
-      setIsLoading(false);
-    }
-  }, [updatedTableData]);
-
-  console.log(trackingTableData)
   const handleTrackClick = (latitude, longitude) => {
     onTrackClick(latitude, longitude);
+    console.log(latitude, longitude);
   };
 
   const columns = [
     {
-      accessor: 'vehicle_reg',
+      accessor: 'vehicle_reg_num',
       Header: 'Vehicle',
       headerProps: { className: '' },
       cellProps: {
@@ -200,21 +69,21 @@ const VehicleTable = ({ onTrackClick }) => {
         );
       }
     },
-    {
-      accessor: 'school_code',
-      Header: 'School',
-      headerProps: { className: 'pe-1' },
-      cellProps: {
-        className: 'p-0'
-      },
-      Cell: rowData => {
-        return (
-          <div className="flex-1 text-center justify-center ">
-            <td className="mb-0 p-0  fs--2">{rowData.value}</td>
-          </div>
-        );
-      }
-    },
+    // {
+    //   accessor: 'school_code', // Add a new column for school name
+    //   Header: 'School',
+    //   headerProps: { className: 'pe-1' },
+    //   cellProps: {
+    //     className: 'p-0'
+    //   },
+    //   Cell: rowData => {
+    //     return (
+    //       <div className="flex-1 text-center justify-center ">
+    //         <td className="mb-0 p-0  fs--2">{rowData.value}</td>
+    //       </div>
+    //     );
+    //   }
+    // },
     {
       Header: 'Track',
       headerProps: { className: 'pe-1' },
@@ -260,15 +129,11 @@ const VehicleTable = ({ onTrackClick }) => {
     }
   ];
 
-  if (isLoading) {
-    return <div>Loading...</div>; // Render a loading indicator while data is loading
-  }
-
   return (
     <div>
-      <AdvanceTableWrapper columns={columns} data={ trackingTableData }>
+      <AdvanceTableWrapper columns={columns} data={tableData}>
         <Card.Header>
-          <Row className="flex-center"> 
+          <Row className="flex-center">
             <Col
               xs={4}
               sm="auto"

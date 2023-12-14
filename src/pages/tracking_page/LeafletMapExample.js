@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 // import FalconComponentCard from 'components/common/FalconComponentCard';
 import L from 'leaflet';
 import 'leaflet.tilelayer.colorfilter';
@@ -11,6 +11,9 @@ import { toast } from 'react-toastify';
 import 'leaflet-rotatedmarker';
 
 const LeafletMapExample = ({ Location }) => {
+  const [map, setMap] = useState(null);
+  const [marker, setMarker] = useState(null);
+  const [markerPosition, setMarkerPosition] = useState([0, 0]);
   function LayerComponent() {
     const map = useMap();
     const { config } = useContext(AppContext);
@@ -35,6 +38,26 @@ const LeafletMapExample = ({ Location }) => {
     }, [config]);
 
     useEffect(() => {
+      // Update marker position when Location prop changes
+      if (Location && Location.latitude && Location.longitude) {
+        setMarkerPosition([Location.latitude, Location.longitude]);
+      }
+    }, [Location]); 
+
+    useEffect(() => {
+      if (map) {
+        if (marker) {
+          src/pages/tracking_page/LeafletMapExample.js
+          marker.setLatLng(markerPosition);
+        } else {
+          // Create new marker when none exists
+          const newMarker = L.marker(markerPosition).addTo(map);
+          setMarker(newMarker);
+        }
+      }
+    }, [map, marker, markerPosition]);
+
+    useEffect(() => {
       if (map) {
         L.tileLayer
           .colorFilter(
@@ -48,6 +71,7 @@ const LeafletMapExample = ({ Location }) => {
           .addTo(map);
       }
     }, [isDark]);
+
     var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
 
     function vehicleStatus(marker) {
@@ -68,6 +92,7 @@ const LeafletMapExample = ({ Location }) => {
       if (currentVehicle.vehicle && currentVehicle.school) {
         // console.log(currentVehicle.vehicle, currentVehicle.school);
         let imei = currentVehicle.vehicle.slice(2);
+        
         let school = null;
 
         loggedInUser.user.companies.map(comp => {
@@ -130,7 +155,7 @@ const LeafletMapExample = ({ Location }) => {
             'checksum'
           ];
           let msg = event.data.slice(1, event.data.length - 1).split(',');
-          let marker = {};
+          
           for (let index = 0; index < 38; index++) {
             // 38 is length of frame {AIS 140}
             marker[format[index]] = msg[index];

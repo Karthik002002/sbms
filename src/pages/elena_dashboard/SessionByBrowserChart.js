@@ -39,29 +39,26 @@ const SessionByBrowserChart = ({ chartdata }) => {
       });
       setCenterText(totalCount);
     });
-    
+
     if (data) {
       if (selectedFilter.company) {
-        let totalCount = 0; // Initialize total count
-    
+        let totalCount = 0;
+
         storedData = storedData.filter(
           company => company.vehicleCompany_name === selectedFilter.company
         );
-    
+
         storedData.forEach(company => {
           company.schools.forEach(school => {
-            totalCount += school.vehicles.length; // Accumulate the count
-            console.log(totalCount); // Log for verification (optional)
+            totalCount += school.vehicles.length;
+            console.log(totalCount);
           });
         });
-    
+
         setCenterText(totalCount); // Set the center text with the total count
       }
     }
-    
-
-    
-  }, [centerText, selectedFilter ]);
+  }, [centerText, selectedFilter]);
 
   return (
     <ReactEChartsCore
@@ -116,7 +113,7 @@ const SessionByBrowserChart = ({ chartdata }) => {
               position: 'center',
               fontSize: 30,
               fontWeight: 'bold',
-              formatter: '{a|' + centerText + '}', 
+              formatter: '{a|' + centerText + '}',
               rich: {
                 a: {
                   fontSize: 30,
@@ -126,10 +123,12 @@ const SessionByBrowserChart = ({ chartdata }) => {
               }
             },
             data: [{ value: centerText }],
-            tooltip: { show: true,
+            tooltip: {
+              show: true,
               formatter: function (params) {
                 return 'Total vehicle count: ' + centerText; // Adjust the format here
-              }}
+              }
+            }
           }
         ]
       }}

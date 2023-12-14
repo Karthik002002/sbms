@@ -40,6 +40,7 @@ const AdvanceTableWrapper = ({
   selectionColumnWidth,
   pagination,
   perPage = 10
+
 }) => {
   const {
     getTableProps,

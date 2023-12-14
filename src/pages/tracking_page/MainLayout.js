@@ -5,8 +5,8 @@ import { Card, Row, Col } from 'react-bootstrap';
 import NavbarVertical from 'components/navbar/vertical_tracking/NavbarVertical';
 // import ProductProvider from 'components/app/e-commerce/ProductProvider';
 // import CourseProvider from 'components/app/e-learning/CourseProvider';
-import LeafletMapExample from './LeafletMapExample';
-import VehicleTable from './VehicleTableOne';
+import LeafletMapExample from './LeafletMapExampleOne';
+import VehicleTable from './VehicleTable';
 
 const MainLayout = () => {
   const { hash, pathname } = useLocation();
@@ -15,9 +15,40 @@ const MainLayout = () => {
     latitude: 0,
     longitude: 0
   });
-  // const isChat = pathname.includes('chat');
-  const data = JSON.parse(window.sessionStorage.getItem('dashboardData'));
+  const [ datas, setDatas] = useState([])
+  useEffect(() => {
+    
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://192.168.0.30:8000/updated_status/'); 
+        if (!response.ok) {
+          throw new Error('Network response was not ok.');
+        }
+        const result = await response.json();
+        setDatas(result); 
+      } catch (error) {
+        console.error('There was a problem fetching the data:', error);
+      }
+    };
 
+    setInterval(() => {
+      fetchData()
+    }, 5 * 1000);
+    
+  },[])
+  
+  useEffect(()=>{
+    console.log(datas)
+  },[datas])
+
+  // useEffect(()=>{
+  //   console.log(currentLocation)
+  // }),[currentLocation]
+  // const isChat = pathname.includes('chat');
+
+
+  const data = JSON.parse(window.sessionStorage.getItem('trackingData'));
+  
   useEffect(() => {
     setTimeout(() => {
       if (hash) {
@@ -46,7 +77,7 @@ const MainLayout = () => {
       <Row className="my-3">
         <Col sm={2}md={3} className="">
           <Card className="mb-3">
-            <VehicleTable data={data} onTrackClick={handleTrackClick} />
+            <VehicleTable data={datas} onTrackClick={handleTrackClick} />
           </Card>
         </Col>
         <Col sm={10} md={9} className="">

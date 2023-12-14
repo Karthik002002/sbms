@@ -13,41 +13,38 @@ import tableLocationMarker from 'assets/img/icons/map-marker.png';
 import React, { useEffect, useState } from 'react';
 import historyLogo from '../../assets/img/icons/history-logo.png';
 import { useFilterContext } from 'context/FilterContext';
-import { json } from 'is_js';
 
-const VehicleTable = ({ onTrackClick , data }) => {
+const VehicleTable = ({ onTrackClick, data }) => {
   const { selectedFilter } = useFilterContext();
   const [trackingTableData, setTrackingTableData] = useState(data);
   const [customers, setCustomers] = useState([]);
-  const [updatedTableData, setUpdatedTableData] = useState([])
-  
-  
-    useEffect(() => {
-      console.log(data)
-      if (
-        Array.isArray(trackingTableData) &&
-        selectedFilter &&
-        selectedFilter.company === null
-      ) {
-        const newData = trackingTableData.reduce((acc, company) => {
-          company.schools.forEach(school => {
-            school.vehicles.forEach(vehicle => {
-              acc.push({
-                vehicle_reg: vehicle.vehicle_reg,
-                school_code: school.school_code,
-                latitude: vehicle.latitude,
-                longitude: vehicle.longitude
-              });
+  const [updatedTableData, setUpdatedTableData] = useState([]);
+
+  useEffect(() => {
+    console.log(data);
+    if (
+      Array.isArray(trackingTableData) &&
+      selectedFilter &&
+      selectedFilter.company === null
+    ) {
+      const newData = trackingTableData.reduce((acc, company) => {
+        company.schools.forEach(school => {
+          school.vehicles.forEach(vehicle => {
+            acc.push({
+              vehicle_reg: vehicle.vehicle_reg,
+              school_code: school.school_code,
+              latitude: vehicle.latitude,
+              longitude: vehicle.longitude
             });
           });
-          return acc;
-        }, []);
-        if (newData.length > 0) {
-          setUpdatedTableData(newData);
-        }
+        });
+        return acc;
+      }, []);
+      if (newData.length > 0) {
+        setUpdatedTableData(newData);
       }
-    }, [updatedTableData, selectedFilter, data]);
-
+    }
+  }, [updatedTableData, selectedFilter, data]);
 
   // useEffect(() => {
   //   const data = window.sessionStorage.getItem('dashboardData');
@@ -79,13 +76,11 @@ const VehicleTable = ({ onTrackClick , data }) => {
   //     processDashboardData(data);
   //   }
 
-
   //   if (trackingTableData !== null){
   //     setUpdatedTableData(trackingTableData)
   //   }
   // }, [selectedFilter]);
 
-  
   // else if (
   //   selectedFilter &&
   //   selectedFilter.company !== null &&
@@ -134,8 +129,6 @@ const VehicleTable = ({ onTrackClick , data }) => {
   //   console.log(newData)
   //   setTrackingTableData(newData);
   // }
-
-  
 
   // useEffect(() => {
   //   const responseData = JSON.parse(sessionStorage.getItem('dashboardData'));
@@ -199,7 +192,8 @@ const VehicleTable = ({ onTrackClick , data }) => {
   //     processDashboardData(data);
   //   }
   // }, [selectedFilter]);
-  console.log(updatedTableData)
+
+  console.log(updatedTableData);
   const handleTrackClick = (latitude, longitude) => {
     onTrackClick(latitude, longitude);
   };
@@ -282,9 +276,9 @@ const VehicleTable = ({ onTrackClick , data }) => {
 
   return (
     <div>
-      <AdvanceTableWrapper columns={columns} data={ updatedTableData }>
+      <AdvanceTableWrapper columns={columns} data={updatedTableData}>
         <Card.Header>
-          <Row className="flex-center"> 
+          <Row className="flex-center">
             <Col
               xs={4}
               sm="auto"

@@ -36,7 +36,6 @@ const StackedHorizontalChartSample = () => {
   }, []);
 
   useEffect(() => {
-    console.log(selectedFilter)
     let filteredData = firstData; 
   
     if (selectedFilter && selectedFilter.company === null) {

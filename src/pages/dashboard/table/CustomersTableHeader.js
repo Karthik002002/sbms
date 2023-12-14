@@ -40,7 +40,7 @@ const CustomersTableHeader = ({ selectedRowIds }) => {
             >
               <span className="d-none d-sm-inline-block ms-1">New</span>
             </IconButton> */}
-            <IconButton
+            {/* {<IconButton
               variant="falcon-default"
               size="sm"
               icon="filter"
@@ -48,7 +48,7 @@ const CustomersTableHeader = ({ selectedRowIds }) => {
               className="mx-2"
             >
               <span className="d-none d-sm-inline-block ms-1">Filter</span>
-            </IconButton>
+            </IconButton>} */}
             <IconButton
               variant="falcon-default"
               size="sm"
