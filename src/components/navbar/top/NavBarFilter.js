@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Button } from 'react-bootstrap'; // Assuming you're using React-Bootstrap
+import { Modal, Button } from 'react-bootstrap'; 
 import IconButton from 'components/common/IconButton';
 import { useFilterContext } from 'context/FilterContext';
 
@@ -32,7 +32,7 @@ const NavBarFilter = () => {
   };
   const handleCompanyChange = companyName => {
     setSelectedCompany(companyName);
-    setSelectedSchool(null);
+    // setSelectedSchool(null);
     setSelectedVehicle(null);
   };
 
@@ -64,7 +64,6 @@ const NavBarFilter = () => {
         </Modal.Header>
         <Modal.Body className="d-flex justify-content-center- align-items-center flex-column bg-light p-4">
           <div>
-            {/* Dropdown for company selection */}
             <select
               value={selectedCompany}
               onChange={e => handleCompanyChange(e.target.value)}
@@ -85,14 +84,12 @@ const NavBarFilter = () => {
           </div>
           {selectedCompany && (
             <div>
-              {/* Dropdown for school selection */}
               <select
                 value={selectedSchool}
                 onChange={e => handleSchoolChange(e.target.value)}
                 className="border-0 m-2 text-center word-wrap bg-light"
               >
                 <option value="">Select School</option>
-                {/* Filter schools based on selected company */}
                 {data
                   .find(
                     company => company.vehicleCompany_name === selectedCompany
@@ -107,14 +104,13 @@ const NavBarFilter = () => {
           )}
           {selectedSchool && (
             <div>
-              {/* Dropdown for vehicle selection */}
+              
               <select
                 value={selectedVehicle}
                 onChange={e => handleVehicleChange(e.target.value)}
                 className="border-0 m-2 text-center bg-light"
               >
                 <option value="">Select Vehicle</option>
-                {/* Filter vehicles based on selected school */}
                 {data
                   .find(
                     company => company.vehicleCompany_name === selectedCompany

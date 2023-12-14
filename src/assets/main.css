@@ -39,7 +39,7 @@
 /* Daily KM report AdminDashboard */
 
 .dropdown-menu-height {
-  max-height: 200px; 
+  max-height: 200 px; 
   overflow-y: auto; 
 }
 /*  Tracking page */
@@ -142,5 +142,11 @@
   .container-sm,
   .container-xl {
     max-width: none !important;
+  }
+}
+
+@media only screen and (max-width: 380px){
+  #topLogo{
+    margin-right: auto;
   }
 }

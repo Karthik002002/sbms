@@ -106,7 +106,7 @@ const SessionByBrowserChart = ({ chartdata }) => {
           {
             type: 'pie',
             radius: ['0%', '10%'],
-            center: window.innerWidth < 580 ? ['50%', '58%'] : ['50%', '50%'],
+            center: window.innerWidth < 580 ? ['50%', '50%'] : ['50%', '50%'],
             itemStyle: {
               color: 'transparent',
               borderColor: 'transparent'

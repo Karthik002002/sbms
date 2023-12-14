@@ -13,22 +13,23 @@ import tableLocationMarker from 'assets/img/icons/map-marker.png';
 import React, { useEffect, useState } from 'react';
 import historyLogo from '../../assets/img/icons/history-logo.png';
 import { useFilterContext } from 'context/FilterContext';
+import { json } from 'is_js';
 
-const VehicleTable = ({ onTrackClick }) => {
+const VehicleTable = ({ onTrackClick , data }) => {
   const { selectedFilter } = useFilterContext();
-  const [trackingTableData, setTrackingTableData] = useState([]);
+  const [trackingTableData, setTrackingTableData] = useState(data);
   const [customers, setCustomers] = useState([]);
   const [updatedTableData, setUpdatedTableData] = useState([])
-
-  useEffect(() => {
-    const data = window.sessionStorage.getItem('dashboardData');
-
-    const processDashboardData = data => {
-      const parsedData = JSON.parse(data);
-      setCustomers(parsedData);
-
-      if (selectedFilter && selectedFilter.company === null) {
-        const newData = parsedData.reduce((acc, company) => {
+  
+  
+    useEffect(() => {
+      console.log(data)
+      if (
+        Array.isArray(trackingTableData) &&
+        selectedFilter &&
+        selectedFilter.company === null
+      ) {
+        const newData = trackingTableData.reduce((acc, company) => {
           company.schools.forEach(school => {
             school.vehicles.forEach(vehicle => {
               acc.push({
@@ -41,20 +42,50 @@ const VehicleTable = ({ onTrackClick }) => {
           });
           return acc;
         }, []);
-        setUpdatedTableData(newData);
-        setTrackingTableData(newData);
+        if (newData.length > 0) {
+          setUpdatedTableData(newData);
+        }
       }
-    };
-
-    if (data !== null) {
-      processDashboardData(data);
-    }
+    }, [updatedTableData, selectedFilter, data]);
 
 
-    if (trackingTableData !== null){
-      setUpdatedTableData(trackingTableData)
-    }
-  }, [selectedFilter]);
+  // useEffect(() => {
+  //   const data = window.sessionStorage.getItem('dashboardData');
+
+  //   const processDashboardData = data => {
+  //     const parsedData = JSON.parse(data);
+  //     setCustomers(parsedData);
+
+  //     if (selectedFilter && selectedFilter.company === null) {
+  //       const newData = parsedData.reduce((acc, company) => {
+  //         company.schools.forEach(school => {
+  //           school.vehicles.forEach(vehicle => {
+  //             acc.push({
+  //               vehicle_reg: vehicle.vehicle_reg,
+  //               school_code: school.school_code,
+  //               latitude: vehicle.latitude,
+  //               longitude: vehicle.longitude
+  //             });
+  //           });
+  //         });
+  //         return acc;
+  //       }, []);
+  //       setUpdatedTableData(newData);
+  //       setTrackingTableData(newData);
+  //     }
+  //   };
+
+  //   if (data !== null) {
+  //     processDashboardData(data);
+  //   }
+
+
+  //   if (trackingTableData !== null){
+  //     setUpdatedTableData(trackingTableData)
+  //   }
+  // }, [selectedFilter]);
+
+  
   // else if (
   //   selectedFilter &&
   //   selectedFilter.company !== null &&
@@ -104,11 +135,7 @@ const VehicleTable = ({ onTrackClick }) => {
   //   setTrackingTableData(newData);
   // }
 
-  useEffect(() => {
-    
-      setUpdatedTableData(trackingTableData);
-        
-  }, [trackingTableData]);
+  
 
   // useEffect(() => {
   //   const responseData = JSON.parse(sessionStorage.getItem('dashboardData'));
@@ -172,14 +199,7 @@ const VehicleTable = ({ onTrackClick }) => {
   //     processDashboardData(data);
   //   }
   // }, [selectedFilter]);
-  useEffect(() => {
-    
-    if (updatedTableData.length !== 0) {
-      setIsLoading(false);
-    }
-  }, [updatedTableData]);
-
-  console.log(trackingTableData)
+  console.log(updatedTableData)
   const handleTrackClick = (latitude, longitude) => {
     onTrackClick(latitude, longitude);
   };
@@ -260,13 +280,9 @@ const VehicleTable = ({ onTrackClick }) => {
     }
   ];
 
-  if (isLoading) {
-    return <div>Loading...</div>; // Render a loading indicator while data is loading
-  }
-
   return (
     <div>
-      <AdvanceTableWrapper columns={columns} data={ trackingTableData }>
+      <AdvanceTableWrapper columns={columns} data={ updatedTableData }>
         <Card.Header>
           <Row className="flex-center"> 
             <Col

@@ -1098,7 +1098,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   --falcon-nav-pills-link-active-bg: #2c7be5;
   --falcon-navbar-dark-color: hsla(0, 0%, 100%, 0.55);
   --falcon-navbar-dark-hover-color: hsla(0, 0%, 100%, 0.75);
-  --falcon-navbar-dark-active-color: hsla(0, 0%, 100%, 0.75) ;
+  --falcon-navbar-dark-active-color: hsla(0, 0%, 100%, 1) ;
   --falcon-navbar-dark-disabled-color: hsla(0, 0%, 100%, 0.25);
   --falcon-navbar-dark-toggler-border-color: hsla(0, 0%, 100%, 0.1);
   --falcon-navbar-light-color: rgba(0, 0, 0, 0.55);
@@ -20555,7 +20555,7 @@ pre[class*='language-'] {
   }
 }
 .footer {
-  position: absolute;
+  position: none;
   bottom: 0;
   width: 100%;
 }

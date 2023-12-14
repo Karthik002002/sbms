@@ -6,7 +6,7 @@ import NavbarVertical from 'components/navbar/vertical_tracking/NavbarVertical';
 // import ProductProvider from 'components/app/e-commerce/ProductProvider';
 // import CourseProvider from 'components/app/e-learning/CourseProvider';
 import LeafletMapExample from './LeafletMapExample';
-import VehicleTable from './VehicleTable';
+import VehicleTable from './VehicleTableOne';
 
 const MainLayout = () => {
   const { hash, pathname } = useLocation();
@@ -16,6 +16,7 @@ const MainLayout = () => {
     longitude: 0
   });
   // const isChat = pathname.includes('chat');
+  const data = JSON.parse(window.sessionStorage.getItem('dashboardData'));
 
   useEffect(() => {
     setTimeout(() => {
@@ -45,7 +46,7 @@ const MainLayout = () => {
       <Row className="my-3">
         <Col sm={2}md={3} className="">
           <Card className="mb-3">
-            <VehicleTable onTrackClick={handleTrackClick} />
+            <VehicleTable data={data} onTrackClick={handleTrackClick} />
           </Card>
         </Col>
         <Col sm={10} md={9} className="">

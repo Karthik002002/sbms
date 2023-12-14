@@ -27,7 +27,7 @@ const RaceChart = lazy(() => import('./RaceChart'));
 const Customers = lazy(() => import('pages/dashboard/table/Customers'));
 const UsersByCountry = lazy(() => import('./UsersByCountry'));
 import { countryData } from 'data/countryData';
-import StackedHorizontalChartSample from './StackedHorizontalChartSample';
+import StackedHorizontalChartSample from './StackedHorizontalChartSampleTwo';
 
 import datas from '../../sampleData/data.json';
 

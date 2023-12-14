@@ -273,9 +273,7 @@ const StackedHorizontalChart = () => {
           });
         });
       });
-      console.log(horizontalCharData); // Verify the data structure
-
-      // Perform any further processing or use of horizontalCharData here
+      console.log(horizontalCharData); 
     }
   }, [responseData]);
 
