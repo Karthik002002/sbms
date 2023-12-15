@@ -16,41 +16,42 @@ import historyLogo from '../../assets/img/icons/history-logo.png';
 const VehicleTable = ({ onTrackClick , data}) => {
   const responseData = JSON.parse(sessionStorage.getItem('dashboardData'));
   console.log(data)
-  // const [tableData, setTableData] = useState([])
+  const [tableData, setTableData] = useState([])
   
-  // const transformData = (data) => {
-  //   return data.map((item) => ({
-  //     vehicle_reg_num: item.reg_no,
-  //     latitude: item.lat,
-  //     longitude: item.lon
-  //   }));
-  // };
+  const transformData = (data) => {
+    return data.map((item) => ({
+      vehicle_reg_num: item.reg_no,
+      latitude: item.lat,
+      longitude: item.lon,      
+      degree : item.heading
+    }));
+  };
 
  
 
-  // useEffect(()=>{
-  //   const FirstData = transformData(data)
-  //   setTableData(FirstData)
-  // },[data])
+  useEffect(()=>{
+    const FirstData = transformData(data)
+    setTableData(FirstData)
+  },[data])
 
-  const tableData = responseData.reduce((acc, curr) => {
-    curr.schools.forEach(school => {
-      school.vehicles.forEach(vehicle => {
-        acc.push({
-          vehicle_reg_num: vehicle.vehicle_reg,
-          school_name: school.school_name,
-          school_code: school.school_code,
-          latitude: vehicle.latitude,
-          longitude: vehicle.longitude
-        });
-      });
-    });
-    return acc;
-  }, []);
+  // const tableData = responseData.reduce((acc, curr) => {
+  //   curr.schools.forEach(school => {
+  //     school.vehicles.forEach(vehicle => {
+  //       acc.push({
+  //         vehicle_reg_num: vehicle.vehicle_reg,
+  //         school_name: school.school_name,
+  //         school_code: school.school_code,
+  //         latitude: vehicle.latitude,
+  //         longitude: vehicle.longitude
+  //       });
+  //     });
+  //   });
+  //   return acc;
+  // }, []);
 
-  const handleTrackClick = (latitude, longitude) => {
-    onTrackClick(latitude, longitude);
-    console.log(latitude, longitude);
+  const handleTrackClick = (latitude, longitude, degree) => {
+    onTrackClick(latitude, longitude, degree);
+    console.log(latitude, longitude, degree);
   };
 
   const columns = [
@@ -91,13 +92,13 @@ const VehicleTable = ({ onTrackClick , data}) => {
         className: 'p-0'
       },
       Cell: rowData => {
-        const { latitude, longitude } = rowData.row.original;
+        const { latitude, longitude, degree } = rowData.row.original;
         return (
           <div className="d-flex justify-content-center  border-0 btn-sm bg-white track-btn-button pt-1 p-0">
             <div className="d-flex">
               <Button
                 type="button"
-                onClick={() => handleTrackClick(latitude, longitude)}
+                onClick={() => handleTrackClick(latitude, longitude, degree)}
                 className="bg-white border-0  h-auto"
               >
                 <img

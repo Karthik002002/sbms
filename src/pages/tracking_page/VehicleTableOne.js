@@ -19,7 +19,7 @@ const VehicleTable = ({ onTrackClick, data }) => {
   const [trackingTableData, setTrackingTableData] = useState(data);
   const [customers, setCustomers] = useState([]);
   const [updatedTableData, setUpdatedTableData] = useState([]);
-
+  setTrackingTableData(window.sessionStorage.getItem('dashboardData'))
   useEffect(() => {
     console.log(data);
     if (

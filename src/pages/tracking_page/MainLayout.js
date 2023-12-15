@@ -11,13 +11,13 @@ import VehicleTable from './VehicleTable';
 const MainLayout = () => {
   const { hash, pathname } = useLocation();
   const isKanban = pathname.includes('kanban');
+  const [vehicleID, setVehicleID] = useState()
   const [currentLocation, setCurrentLocation] = useState({
     latitude: 0,
     longitude: 0
   });
-  const [ datas, setDatas] = useState([])
+  const [ liveData, setliveData] = useState([])
   useEffect(() => {
-    
     const fetchData = async () => {
       try {
         const response = await fetch('http://192.168.0.30:8000/updated_status/'); 
@@ -25,21 +25,19 @@ const MainLayout = () => {
           throw new Error('Network response was not ok.');
         }
         const result = await response.json();
-        setDatas(result); 
+        setliveData(result); 
       } catch (error) {
         console.error('There was a problem fetching the data:', error);
       }
     };
-
     setInterval(() => {
       fetchData()
-    }, 5 * 1000);
-    
+    }, 10 * 1000);
   },[])
   
   useEffect(()=>{
-    console.log(datas)
-  },[datas])
+    console.log(liveData)
+  },[liveData])
 
   // useEffect(()=>{
   //   console.log(currentLocation)
@@ -65,7 +63,7 @@ const MainLayout = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  const handleTrackClick = (latitude, longitude) => {
+  const handleTrackClick = (latitude, longitude,degree) => {
     setCurrentLocation({ latitude, longitude });
   };
 
@@ -77,7 +75,7 @@ const MainLayout = () => {
       <Row className="my-3">
         <Col sm={2}md={3} className="">
           <Card className="mb-3">
-            <VehicleTable data={datas} onTrackClick={handleTrackClick} />
+            <VehicleTable data={liveData} onTrackClick={handleTrackClick} />
           </Card>
         </Col>
         <Col sm={10} md={9} className="">

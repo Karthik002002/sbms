@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useMemo } from 'react';
 // import FalconComponentCard from 'components/common/FalconComponentCard';
 import L from 'leaflet';
 import 'leaflet.tilelayer.colorfilter';
@@ -10,15 +10,14 @@ import { busIconIdle } from '../../pages/tracking_page/Icons/bus-idle-64.png';
 // import { markers } from 'data/dashboard/projectManagement';
 import { toast } from 'react-toastify';
 import 'leaflet-rotatedmarker';
+import MapMarker from './Marker/Marker';
 
 const LeafletMapExample = ({ Location }) => {
-  
-  const [ centerData , setCenterData] = useState([ 12.972442,  77.580643])
+  const [centerData, setCenterData] = useState([13.0232067, 77.5856322]);
   const [markerPosition, setMarkerPosition] = useState({
-    latitude: 0,
-    longitude: 0
+    latitude: 12.972443,
+    longitude: 77.580643
   });
-  const [showDefaultMarker, setShowDefaultMarker] = useState(true);
 
   useEffect(() => {
     if (
@@ -27,14 +26,20 @@ const LeafletMapExample = ({ Location }) => {
       markerPosition.longitude !== undefined
     ) {
       setCenterData([markerPosition.latitude, markerPosition.longitude]);
-      setShowDefaultMarker(false);
     }
   }, [markerPosition]);
-  
+
   function LayerComponent() {
     const map = useMap();
-    
-    
+    const tileLayer = useMemo(
+      () => (
+        <TileLayer
+          attribution={null}
+          url={'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'}
+        />
+      ),
+      []
+    );
     const { config } = useContext(AppContext);
     const { isDark } = config;
     const {
@@ -57,11 +62,9 @@ const LeafletMapExample = ({ Location }) => {
 
     useEffect(() => {
       setMarkerPosition(Location);
-      
     }, [Location]);
 
     useEffect(() => {
-      console.log(markerPosition);
       if (
         markerPosition !== null &&
         markerPosition.latitude !== undefined &&
@@ -71,14 +74,15 @@ const LeafletMapExample = ({ Location }) => {
           iconUrl: require('./Icons/bus-idle-64.png'),
           iconSize: [45, 40]
         });
-        var mapMarker = L.marker([markerPosition.latitude, markerPosition.longitude], {
-          icon: customIcon
-        });
+        var mapMarker = L.marker(
+          [markerPosition.latitude, markerPosition.longitude],
+          {
+            icon: customIcon
+          }
+        );
         mapMarker.addTo(map);
       }
     }, [markerPosition]);
-    
-    
 
     useEffect(() => {
       if (map) {
@@ -95,7 +99,7 @@ const LeafletMapExample = ({ Location }) => {
       }
     }, [isDark]);
 
-    var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+    // var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
 
     function vehicleStatus(marker) {
       return marker.ignition === '1' && Number(marker.speed) === 0
@@ -113,15 +117,19 @@ const LeafletMapExample = ({ Location }) => {
 
     return (
       <>
-        <TileLayer
-          attribution={null}
-          url={'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'}
+        {tileLayer}
+
+        <MapMarker
+          postion={{
+            lat: markerPosition.latitude,
+            lng: markerPosition.longitude
+          }}
         />
-        {showDefaultMarker && (
+        {/* {showDefaultMarker && (
       <Marker
         position={[markerPosition.latitude, markerPosition.longitude]}
       />
-    )}
+    )} */}
       </>
     );
   }

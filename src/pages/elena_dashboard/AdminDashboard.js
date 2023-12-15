@@ -53,7 +53,6 @@ const AdminDashboard = () => {
   // }, []);
 
   useEffect(() => {
-    // Store datas in session storage when the component mounts
     window.sessionStorage.setItem('dashboardData', JSON.stringify(datas));
   }, []);
 

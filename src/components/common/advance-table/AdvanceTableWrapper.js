@@ -61,7 +61,7 @@ const AdvanceTableWrapper = ({
       columns,
       data,
       disableSortBy: !sortable,
-      initialState: { pageSize: pagination ? perPage : data.length }
+        
     },
     useGlobalFilter,
     useSortBy,
