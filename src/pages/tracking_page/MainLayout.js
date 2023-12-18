@@ -5,17 +5,14 @@ import { Card, Row, Col } from 'react-bootstrap';
 import NavbarVertical from 'components/navbar/vertical_tracking/NavbarVertical';
 // import ProductProvider from 'components/app/e-commerce/ProductProvider';
 // import CourseProvider from 'components/app/e-learning/CourseProvider';
-import LeafletMapExample from './LeafletMapExampleOne';
+import LeafletMapExample from './LeafletMapExample';
 import VehicleTable from './VehicleTable';
 
 const MainLayout = () => {
   const { hash, pathname } = useLocation();
   const isKanban = pathname.includes('kanban');
   const [vehicleID, setVehicleID] = useState()
-  const [currentLocation, setCurrentLocation] = useState({
-    latitude: 0,
-    longitude: 0
-  });
+  const [currentVehicle, setCurrentVehicle] = useState('');
   const [ liveData, setliveData] = useState([])
   useEffect(() => {
     const fetchData = async () => {
@@ -26,46 +23,24 @@ const MainLayout = () => {
         }
         const result = await response.json();
         setliveData(result); 
+        console.log(result)
       } catch (error) {
         console.error('There was a problem fetching the data:', error);
       }
     };
-    fetchData()
-    setInterval(() => {
-      fetchData()
-    }, 10 * 1000);
+    fetchData();
+
   },[])
-  
-  useEffect(()=>{
-    console.log(liveData)
-  },[liveData])
-
-  // useEffect(()=>{
-  //   console.log(currentLocation)
-  // }),[currentLocation]
-  // const isChat = pathname.includes('chat');
-
 
   const data = JSON.parse(window.sessionStorage.getItem('trackingData'));
   
-  useEffect(() => {
-    setTimeout(() => {
-      if (hash) {
-        const id = hash.replace('#', '');
-        const element = document.getElementById(id);
-        if (element) {
-          element.scrollIntoView({ block: 'start', behavior: 'smooth' });
-        }
-      }
-    }, 0);
-  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  const handleTrackClick = (latitude, longitude,degree) => {
-    setCurrentLocation({ latitude, longitude });
+  const handleTrackClick = (imei) => {
+    setCurrentVehicle(imei);
   };
 
   return (
@@ -82,7 +57,7 @@ const MainLayout = () => {
         <Col sm={10} md={9} className="">
           <div className={classNames('content', { 'pb-0': isKanban })}>
             <div className="">
-              <LeafletMapExample Location={currentLocation} />
+              <LeafletMapExample imei={currentVehicle} />
             </div>
           </div>
         </Col>

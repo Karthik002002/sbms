@@ -3,8 +3,9 @@ import React, { useContext, useEffect, useState, useMemo } from 'react';
 import L from 'leaflet';
 import 'leaflet.tilelayer.colorfilter';
 import 'leaflet/dist/leaflet.css';
-import { MapContainer, TileLayer, useMap, Marker } from 'react-leaflet';
+import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet';
 import AppContext from 'context/Context';
+import BusIcon from '../tracking_page/Icons/bus-idle-64.png';
 import { busIconIdle } from '../../pages/tracking_page/Icons/bus-idle-64.png';
 // import MarkerClusterGroup from '@changey/react-leaflet-markercluster';
 // import { markers } from 'data/dashboard/projectManagement';
@@ -13,21 +14,26 @@ import 'leaflet-rotatedmarker';
 import MapMarker from './Marker/Marker';
 
 const LeafletMapExample = ({ Location }) => {
-  const [centerData, setCenterData] = useState([13.0232067, 77.5856322]);
+  const [recievedLocation, setRecievedLocation] = useState(null);
+  // const [centerData, setCenterData] = useState([13.0232067, 77.5856322]);
   const [markerPosition, setMarkerPosition] = useState({
     latitude: 12.972443,
     longitude: 77.580643
   });
-
-  useEffect(() => {
-    if (
-      markerPosition !== null &&
-      markerPosition.latitude !== undefined &&
-      markerPosition.longitude !== undefined
-    ) {
-      setCenterData([markerPosition.latitude, markerPosition.longitude]);
-    }
-  }, [markerPosition]);
+  
+  const customIcon = L.icon({
+    iconUrl: BusIcon,
+    iconSize: [45, 40]
+  });
+  // useEffect(() => {
+  //   if (
+  //     markerPosition !== null &&
+  //     markerPosition.latitude !== undefined &&
+  //     markerPosition.longitude !== undefined
+  //   ) {
+  //     setCenterData([markerPosition.latitude, markerPosition.longitude]);
+  //   }
+  // }, [markerPosition]);
 
   function LayerComponent() {
     const map = useMap();
@@ -54,6 +60,7 @@ const LeafletMapExample = ({ Location }) => {
 
     useEffect(() => {
       setMarkerPosition(Location);
+      
     }, [Location]);
 
     useEffect(() => {
@@ -66,7 +73,7 @@ const LeafletMapExample = ({ Location }) => {
           iconUrl: require('./Icons/bus-idle-64.png'),
           iconSize: [45, 40]
         });
-        var mapMarker = L.marker(
+        let mapMarker = L.marker(
           [markerPosition.latitude, markerPosition.longitude],
           {
             icon: customIcon
@@ -84,7 +91,7 @@ const LeafletMapExample = ({ Location }) => {
             {
               attribution: null,
               transparent: true,
-              filter: filter
+              filter: filter,
             }
           )
           .addTo(map);
@@ -120,20 +127,27 @@ const LeafletMapExample = ({ Location }) => {
   function LeafletMap() {
     return (
       <MapContainer
-        zoom={15}
+        zoom={12}
+        minZoom={1}
+        maxZoom={18}
         // minZoom={isRTL ? 1.8 : 1.1}
         zoomSnap={0.25}
-        center={centerData}
+        center={[13.0232067, 77.5856322]}
         // center={position}
         radius={200}
         style={{ height: '85vh', width: '100%' }}
       >
-        <MapMarker
-          postion={{
+        <Marker
+          icon={customIcon}
+          position={{
             lat: markerPosition.latitude,
             lng: markerPosition.longitude
           }}
-        />
+        >
+          <Popup>
+            <p>Hello</p>
+          </Popup>
+        </Marker>
         <LayerComponent />
       </MapContainer>
     );

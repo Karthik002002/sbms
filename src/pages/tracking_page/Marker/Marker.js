@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react';
 import { LeafletTrackingMarker } from 'react-leaflet-tracking-marker';
 import BusIcon from '../Icons/bus-idle-64.png';
 import L from 'leaflet';
+import { Popup } from 'react-leaflet';
 
 const MapMarker = ({ position }) => {
   if (!position) {
-    return null; 
+    return null;
   }
   const { lat, lng } = position;
   const [prevPos, setPrevPos] = useState([lat, lng]);
@@ -17,7 +18,7 @@ const MapMarker = ({ position }) => {
   useEffect(() => {
     if (prevPos[1] !== lng && prevPos[0] !== lat) setPrevPos([lat, lng]);
 
-    console.log(lat, lng)
+    console.log(lat, lng);
   }, [lat, lng, prevPos]);
   return (
     <LeafletTrackingMarker
@@ -25,7 +26,11 @@ const MapMarker = ({ position }) => {
       position={[lat, lng]}
       previousPosition={prevPos}
       duration={1000}
-    ></LeafletTrackingMarker>
+    >
+      <Popup>
+        <p>HEllo</p>
+      </Popup>
+    </LeafletTrackingMarker>
   );
 };
 

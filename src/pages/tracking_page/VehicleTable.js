@@ -25,7 +25,8 @@ const VehicleTable = ({ onTrackClick , data}) => {
       vehicle_reg_num: item.reg_no,
       latitude: item.lat,
       longitude: item.lon,      
-      degree : item.heading
+      degree : item.heading,
+      imei: item.imei
     }));
   };
   const [selectedStatus, setSelectedStatus] = useState("")  
@@ -58,10 +59,7 @@ const VehicleTable = ({ onTrackClick , data}) => {
   //   return acc;
   // }, []);
 
-  const handleTrackClick = (latitude, longitude, degree) => {
-    onTrackClick(latitude, longitude, degree);
-    console.log(latitude, longitude, degree);
-  };
+  
 
   const columns = [
     {
@@ -101,13 +99,22 @@ const VehicleTable = ({ onTrackClick , data}) => {
         className: 'p-0'
       },
       Cell: rowData => {
-        const { latitude, longitude, degree } = rowData.row.original;
+        const { imei} = rowData.row.original;
         return (
           <div className="d-flex justify-content-center  border-0 btn-sm bg-white track-btn-button pt-1 p-0">
             <div className="d-flex">
+            <OverlayTrigger
+                key="left"
+                placement="top"
+                overlay={
+                  <Tooltip style={{ position: 'fixed' }} id="ThemeColor">
+                    Track
+                  </Tooltip>
+                }
+              >
               <Button
                 type="button"
-                onClick={() => handleTrackClick(latitude, longitude, degree)}
+                onClick={() => onTrackClick(imei)}
                 className="bg-white border-0  h-auto"
               >
                 <img
@@ -117,6 +124,7 @@ const VehicleTable = ({ onTrackClick , data}) => {
                   width={15}
                 />
               </Button>
+              </OverlayTrigger>
             </div>
             <div className="d-flex">
               <OverlayTrigger
