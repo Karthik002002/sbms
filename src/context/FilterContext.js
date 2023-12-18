@@ -9,10 +9,13 @@ export const FilterProvider = ({ children }) => {
     company: null,
     school: null,
     vehicle: null,
+    status: null
   });
   useEffect(()=>{
     console.log("Data updated")
+    console.log(selectedFilter)
   },[selectedFilter])
+
   const updateFilter = (filterData) => {
     setSelectedFilter(filterData);
   };

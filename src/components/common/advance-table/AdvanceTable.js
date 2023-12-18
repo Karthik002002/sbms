@@ -12,6 +12,8 @@ const AdvanceTable = ({
   rowClassName,
   tableProps
 }) => {
+  const isDataEmpty = page.length === 0; //!Array.isArray(page) || 
+  
   return (
     <div className="table-responsive scrollbar tracking-page-table">
       <Table {...getTableProps(tableProps)}>
@@ -43,7 +45,13 @@ const AdvanceTable = ({
           </tr>
         </thead>
         <tbody className={bodyClassName}>
-          {page.map((row, i) => {
+          {isDataEmpty ? 
+           (<tr>
+           <td colSpan={headers.length} className="text-center pt-10 pb-10 ">
+             Loading the data...
+           </td>
+         </tr>) :
+         (page.map((row, i) => {
             prepareRow(row);
             return (
               <tr key={i} className={rowClassName} {...row.getRowProps()}>
@@ -59,7 +67,7 @@ const AdvanceTable = ({
                 })}
               </tr>
             );
-          })}
+          }))}
         </tbody>
       </Table>
     </div>

@@ -19,7 +19,8 @@ const VehicleTable = ({ onTrackClick, data }) => {
   const [trackingTableData, setTrackingTableData] = useState(data);
   const [customers, setCustomers] = useState([]);
   const [updatedTableData, setUpdatedTableData] = useState([]);
-  setTrackingTableData(window.sessionStorage.getItem('dashboardData'))
+  const [ isLoading, setIsLoading] = useState(true)
+  // setTrackingTableData(window.sessionStorage.getItem('dashboardData'))
   useEffect(() => {
     console.log(data);
     if (
@@ -42,9 +43,10 @@ const VehicleTable = ({ onTrackClick, data }) => {
       }, []);
       if (newData.length > 0) {
         setUpdatedTableData(newData);
+        setIsLoading(false)
       }
     }
-  }, [updatedTableData, selectedFilter, data]);
+  }, [ selectedFilter, data]);
 
   // useEffect(() => {
   //   const data = window.sessionStorage.getItem('dashboardData');
@@ -193,7 +195,7 @@ const VehicleTable = ({ onTrackClick, data }) => {
   //   }
   // }, [selectedFilter]);
 
-  console.log(updatedTableData);
+  
   const handleTrackClick = (latitude, longitude) => {
     onTrackClick(latitude, longitude);
   };

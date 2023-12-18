@@ -30,6 +30,7 @@ const MainLayout = () => {
         console.error('There was a problem fetching the data:', error);
       }
     };
+    fetchData()
     setInterval(() => {
       fetchData()
     }, 10 * 1000);

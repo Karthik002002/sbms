@@ -4,6 +4,7 @@
   color: white;
 }
 
+
 /* Notification bell */
 .notification-bell {
   position: relative;
@@ -49,6 +50,12 @@
   max-height: 80vh;
 }
 
+/* Tracking table dropdown color icon */
+.status-colors{
+  height: 10px;
+  width: 5px;
+  color: red;
+}
 .track-btn-button {
   padding-top: 0.1rem !important;
 }

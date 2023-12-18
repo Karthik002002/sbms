@@ -7,17 +7,19 @@ import {
   OverlayTrigger,
   Tooltip
 } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Form, Link } from 'react-router-dom';
 import AdvanceTable from 'components/common/advance-table/AdvanceTable';
 import tableLocationMarker from 'assets/img/icons/map-marker.png';
+import { getColor } from 'helpers/utils';
 import React, { useEffect, useState } from 'react';
 import historyLogo from '../../assets/img/icons/history-logo.png';
-
+import { useFilterContext } from 'context/FilterContext';
 const VehicleTable = ({ onTrackClick , data}) => {
-  const responseData = JSON.parse(sessionStorage.getItem('dashboardData'));
-  console.log(data)
-  const [tableData, setTableData] = useState([])
+  // const responseData = JSON.parse(sessionStorage.getItem('dashboardData'));
   
+  const [tableData, setTableData] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const {setSelectedFilter} = useFilterContext()
   const transformData = (data) => {
     return data.map((item) => ({
       vehicle_reg_num: item.reg_no,
@@ -26,11 +28,18 @@ const VehicleTable = ({ onTrackClick , data}) => {
       degree : item.heading
     }));
   };
+  const [selectedStatus, setSelectedStatus] = useState("")  
+  const selectedData = {status : selectedStatus}
 
- 
-
+  const handleStatusChange = status =>{
+    setSelectedStatus(status)
+    setSelectedFilter(selectedStatus)
+  }
   useEffect(()=>{
     const FirstData = transformData(data)
+    if(data !== null){
+      setIsLoading(false)
+    }
     setTableData(FirstData)
   },[data])
 
@@ -143,11 +152,27 @@ const VehicleTable = ({ onTrackClick , data}) => {
               <h6 className="fs-0 mb-0 text-nowrap py-2 py-xl-0 m-auto text-center p-2">
                 Vehicle List
               </h6>
+            </Col> 
+
+            <Col>
+            <div className="d-flex justify-content-center " >
+              <select className="border-0 rounded text-wrap h-50" onChange={e =>handleStatusChange(e.target.value)}>
+                <option value="" key="" className="fs--1">Select status</option>
+                <option value="Running" key="running" className="text-center">Running</option>
+                <option value="Idle" key="Idle" className="text-center">Idle</option>
+                <option value="Stopped" key="Stopped"  className="text-center">Stopped</option>
+                <option value="Towing" key="Towing" className="text-center">Towing</option>
+                <option value="Parked" key="Parked" className="text-center">Parked</option>
+                <option value="NoNetwork" key="No network" className="text-center">NoNetwork</option>
+                <option value="InActive" key="InActive" className="text-center">InActive</option>
+              </select>
+            </div>
+
             </Col>
           </Row>
         </Card.Header>
         <Card.Body>
-          <AdvanceTable
+          {isLoading ? <div>Loading the data</div>:<AdvanceTable
             table
             headerClassName="bg-200 text-900 text-wrap align-middle text-center "
             rowClassName="align-middle justify-content-center text-*  text-wrap white-space-wrap"
@@ -156,7 +181,7 @@ const VehicleTable = ({ onTrackClick , data}) => {
               striped: true,
               className: ' mb-0 overflow-auto'
             }}
-          />
+          />}
         </Card.Body>
       </AdvanceTableWrapper>
     </div>

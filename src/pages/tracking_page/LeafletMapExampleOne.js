@@ -31,15 +31,7 @@ const LeafletMapExample = ({ Location }) => {
 
   function LayerComponent() {
     const map = useMap();
-    const tileLayer = useMemo(
-      () => (
-        <TileLayer
-          attribution={null}
-          url={'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'}
-        />
-      ),
-      []
-    );
+
     const { config } = useContext(AppContext);
     const { isDark } = config;
     const {
@@ -117,19 +109,10 @@ const LeafletMapExample = ({ Location }) => {
 
     return (
       <>
-        {tileLayer}
-
-        <MapMarker
-          postion={{
-            lat: markerPosition.latitude,
-            lng: markerPosition.longitude
-          }}
+        <TileLayer
+          attribution={null}
+          url={'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'}
         />
-        {/* {showDefaultMarker && (
-      <Marker
-        position={[markerPosition.latitude, markerPosition.longitude]}
-      />
-    )} */}
       </>
     );
   }
@@ -145,6 +128,12 @@ const LeafletMapExample = ({ Location }) => {
         radius={200}
         style={{ height: '85vh', width: '100%' }}
       >
+        <MapMarker
+          postion={{
+            lat: markerPosition.latitude,
+            lng: markerPosition.longitude
+          }}
+        />
         <LayerComponent />
       </MapContainer>
     );
