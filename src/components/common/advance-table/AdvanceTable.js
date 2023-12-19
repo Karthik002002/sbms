@@ -47,7 +47,7 @@ const AdvanceTable = ({
         <tbody className={bodyClassName}>
           {isDataEmpty ? 
            (<tr>
-           <td colSpan={headers.length} className="text-center pt-10 pb-10 ">
+           <td colSpan={headers.length} className="text-center pt-10 pb-10 loading-animation ">
              Loading the data...
            </td>
          </tr>) :

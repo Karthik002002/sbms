@@ -52,10 +52,6 @@ const AdminDashboard = () => {
   //   fetchData();
   // }, []);
 
-  useEffect(() => {
-    window.sessionStorage.setItem('dashboardData', JSON.stringify(datas));
-  }, []);
-
   return (
     <div className="container mt-4 ">
       <Row className="my-3">

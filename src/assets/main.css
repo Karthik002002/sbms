@@ -1,9 +1,7 @@
 /* Navbar  */
-
 .navbar-background-color {
   color: white;
 }
-
 
 /* Notification bell */
 .notification-bell {
@@ -15,12 +13,12 @@
 }
 
 .invert-hover {
-  filter: invert(1); /* Initial state without hover, not inverted */
-  transition: filter 0.1s ease; /* Smooth transition for the filter property */
+  filter: invert(1); 
+  transition: filter 0.1s ease;
 }
 
 .invert-hover:hover {
-  filter: invert(0.8); /* Inverted state on hover */
+  filter: invert(0.8); 
 }
 
 .notification-counter {
@@ -30,6 +28,28 @@
   margin-right: 6px;
   font-size: smaller;
 }
+
+/* Loading animation */
+.loading-animation{
+  content: attr(data-text);
+    white-space: nowrap;
+    color: #000000;
+    animation: loading 5s linear;
+}
+
+@keyframes loading {
+  0% {
+      max-width: 0;
+  }
+}
+
+
+
+/* Bottom adjustments */
+.content{
+  min-height: fit-content !important;
+}
+
 
 /* sessionbybrowser component in AdminDashboard */
 .bus-count-overview {
@@ -155,5 +175,7 @@
 @media only screen and (max-width: 380px){
   #topLogo{
     margin-right: auto;
+    /* height: 20px !important;
+    width: 20px !important; */
   }
 }

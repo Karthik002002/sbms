@@ -120,7 +120,7 @@ const NavbarTopElements = ({
         </button>
       </Navbar.Toggle>
 
-      <Logo at="navbar-top me-1  mt-1 mb-1" width={40} id="topLogo" className={'ms-2 bg-light rounded align-middle me-2 mt-1 mb-1'}/>
+      <Logo at="navbar-top me-1  mt-1 mb-1" width={40} id="topLogo" className={'ms-2 bg-light rounded align-middle me-2 mt-1 mb-1 '}/>
 
       {/* {navbarPosition === 'top' || navbarPosition === 'combo' ? ( */}
       <Navbar.Collapse in={navbarCollapsed} className="scrollbar pb-3 pb-lg-0">

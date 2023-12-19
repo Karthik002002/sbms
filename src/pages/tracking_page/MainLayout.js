@@ -11,35 +11,36 @@ import VehicleTable from './VehicleTable';
 const MainLayout = () => {
   const { hash, pathname } = useLocation();
   const isKanban = pathname.includes('kanban');
-  const [vehicleID, setVehicleID] = useState()
+  const [vehicleID, setVehicleID] = useState();
   const [currentVehicle, setCurrentVehicle] = useState('');
-  const [ liveData, setliveData] = useState([])
+  const [liveData, setliveData] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://192.168.0.30:8000/updated_status/'); 
+        const response = await fetch(
+          'http://192.168.0.30:8000/updated_status/'
+        );
         if (!response.ok) {
           throw new Error('Network response was not ok.');
         }
         const result = await response.json();
-        setliveData(result); 
-        console.log(result)
+        setliveData(result);
+        console.log(result);
       } catch (error) {
         console.error('There was a problem fetching the data:', error);
       }
     };
     fetchData();
-
-  },[])
+  }, []);
 
   const data = JSON.parse(window.sessionStorage.getItem('trackingData'));
-  
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  const handleTrackClick = (imei) => {
+  const handleTrackClick = imei => {
     setCurrentVehicle(imei);
   };
 
@@ -49,7 +50,7 @@ const MainLayout = () => {
       {/* <ProductProvider> */}
       {/* <CourseProvider> */}
       <Row className="my-3">
-        <Col sm={2}md={3} className="">
+        <Col sm={2} md={3} className="">
           <Card className="mb-3">
             <VehicleTable data={liveData} onTrackClick={handleTrackClick} />
           </Card>
@@ -57,7 +58,7 @@ const MainLayout = () => {
         <Col sm={10} md={9} className="">
           <div className={classNames('content', { 'pb-0': isKanban })}>
             <div className="">
-              <LeafletMapExample imei={currentVehicle} />
+              <LeafletMapExample imei={869523058096042} />
             </div>
           </div>
         </Col>
