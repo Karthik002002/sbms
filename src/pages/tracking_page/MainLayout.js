@@ -5,7 +5,7 @@ import { Card, Row, Col } from 'react-bootstrap';
 import NavbarVertical from 'components/navbar/vertical_tracking/NavbarVertical';
 // import ProductProvider from 'components/app/e-commerce/ProductProvider';
 // import CourseProvider from 'components/app/e-learning/CourseProvider';
-import LeafletMapExample from './LeafletMapExample';
+import LeafletMapExample from '../tracking_page/Leaflet/LeafletMapOutClass';
 import VehicleTable from './VehicleTable';
 
 const MainLayout = () => {
