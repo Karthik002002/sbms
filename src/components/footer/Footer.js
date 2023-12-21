@@ -11,8 +11,6 @@ const Footer = () => (
           <span className="d-none d-sm-inline-block">| </span>
           <br className="d-sm-none" /> {new Date().getFullYear()} &copy;{' '}
           <a href="https://elenageosystems.com">Elena Geo Systems</a>
-          <span className="d-none d-sm-inline-block">| </span>
-          Designed by <a href="https://www.studetails.com">StuDetails</a>
         </p>
       </Col>
       <Col sm="auto">

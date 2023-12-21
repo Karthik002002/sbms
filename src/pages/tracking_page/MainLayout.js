@@ -49,15 +49,15 @@ const MainLayout = () => {
       <NavbarVertical />
       {/* <ProductProvider> */}
       {/* <CourseProvider> */}
-      <Row className="my-3">
+      <Row className="my-2 mb-0">
         <Col sm={2} md={3} className="">
-          <Card className="mb-3">
+          <Card className="mb-3 tracking-page-table">
             <VehicleTable data={liveData} onTrackClick={handleTrackClick} />
           </Card>
         </Col>
         <Col sm={10} md={9} className="">
           <div className={classNames('content', { 'pb-0': isKanban })}>
-            <div className="">
+            <div className="tracking-page-map-container">
               <LeafletMapExample imei={869523058096042} />
             </div>
           </div>

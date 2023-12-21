@@ -91,11 +91,13 @@ const LeafletMapExample = ({ imei }) => {
         center={[13,77]}
         // center={position}
         radius={200}
-        style={{ height: '85vh', width: '100%' }}
+        style={{ height: '50vh', width: '100%' }}
+        className='tracking-page-map-container'
       >
          <TileLayer
           attribution={null}
           url={'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'}
+          className="tracking-page-map-container"
         />
         <ReactLeafletDriftMarker
           icon={customIcon}

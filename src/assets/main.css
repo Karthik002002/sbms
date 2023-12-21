@@ -1,11 +1,16 @@
 /* fonts  */
-*
+.nav-link{
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 0 !important;
+}
 
 /* Navbar  */
 .navbar-background-color {
   color: white;
 }
-
+.navbar-font-style{
+  font-weight: 0 !important;
+}
 /* Notification bell */
 .notification-bell {
   position: relative;
@@ -70,7 +75,14 @@
 
 .tracking-page-table {
   height: 70vh;
-  max-height: 80vh;
+  max-height: 79vh;
+}
+
+/* Tracking page Map container */
+
+.tracking-page-map-container{
+  max-height: 79vh !important;
+
 }
 
 /* Tracking table dropdown color icon */
@@ -116,6 +128,15 @@
     z-index: 1;
   }
 }
+@media (min-width: 1000px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: unset !important;
+  }
+}
 
 @media (min-width: 1200px) {
   .container,
@@ -129,7 +150,7 @@
 
 @media only screen and (max-width: 1024px) {
   .tracking-page-table {
-    max-height: 60vh;
+    
     font-size: 10px !important;
   }
   .card-header {
