@@ -101,7 +101,7 @@ const DoughnutRoundedChart = () => {
             vehicle.latitude = newLat;
             vehicle.longitude = newLong;
             vehicle.noChangeCounter = 0;
-            console.log('No');
+            
             return false;
           }
         }
@@ -158,8 +158,7 @@ const DoughnutRoundedChart = () => {
         // Return true or false based on the condition
       }
     }
-
-    console.log('Doughnut Loading');
+    
     const intervalId = setInterval(checkNoNetwork, 1000);
     // console.log(Running: ${runningCount});
     // console.log(Idle: ${idleCount});

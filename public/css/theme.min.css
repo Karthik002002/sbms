@@ -24919,14 +24919,14 @@ html[dir='rtl'] .img-dropdown {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--falcon-gray-300);
+  background-color: white;
   color: var(--falcon-primary);
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 .theme-control-toggle .theme-control-toggle-label:hover {
-  background-color: var(--falcon-gray-400);
+  background-color: var(--falcon-gray-300);
 }
 .theme-control-toggle .theme-control-toggle-input,
 .theme-control-toggle

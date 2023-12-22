@@ -19,19 +19,19 @@ const NavbarTopDropDownMenus = () => {
   // };
 
   return (
-    <ul className="navbar-nav ms-3 mb-2 mb-lg-0 navbar-font-style">
+    <ul className="navbar-nav ms-3 mb-2 mb-lg-0 mt-1 navbar-font-style">
       <li className="nav-item">
-        <Link className="nav-link" to="/dashboard">
+        <Link className="nav-link nav-fonts-styles" to="/dashboard">
           Dashboard
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="/bus-tracking">
+        <Link className="nav-link nav-fonts-styles" to="/bus-tracking">
           Track Your Vehicles
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="#">
+        <Link className="nav-link nav-fonts-styles" to="#">
           Report Generation{' '}
         </Link>
       </li>

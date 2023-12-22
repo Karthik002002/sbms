@@ -1,7 +1,8 @@
 /* fonts  */
-.nav-link{
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 0 !important;
+.nav-fonts-styles{
+  font-family: 'DM Sans', sans-serif !important;
+  font-weight: normal !important;
+  font-size: 15px !important ;
 }
 
 /* Navbar  */

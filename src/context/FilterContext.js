@@ -12,7 +12,6 @@ export const FilterProvider = ({ children }) => {
     status: null
   });
   useEffect(()=>{
-    console.log("Data updated")
     console.log(selectedFilter)
   },[selectedFilter])
 
