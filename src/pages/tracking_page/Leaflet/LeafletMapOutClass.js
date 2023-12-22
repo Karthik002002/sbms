@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import ReactLeafletDriftMarker from 'react-leaflet-drift-marker';
 import { MapContainer, TileLayer, Popup } from 'react-leaflet';
-import L from 'leaflet'
+import L from 'leaflet';
 import runningIcon from '../Icons/running.png';
 import defaultIcon from '../Icons/idle.png';
+import stoppedIcon from '../Icons/stopped.png';
 import RotatedMarker from './RotatedMarker';
 
 class LeafLetMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      iconData: null
+      iconData: null,
+      heading: 0
     };
     this.intervalFunction = null;
   }
@@ -24,7 +26,13 @@ class LeafLetMap extends Component {
           iconSize: [40, 35]
         });
       }
+    } else if (iconData && iconData.ignition === 1 && iconData.speed === 0) {
+      return L.icon({
+        iconUrl: stoppedIcon,
+        iconSize: [40, 35]
+      });
     } else {
+      console.log(this.state.iconData);
       return L.icon({
         iconUrl: defaultIcon,
         iconSize: [40, 35]
@@ -51,8 +59,8 @@ class LeafLetMap extends Component {
         throw new Error('Error on API');
       }
       const result = await response.json();
-      this.setState({ iconData: result });
-      console.log(result);
+      this.setState({ iconData: result, heading: Number(result.heading) });
+      console.log(this.state.heading);
     } catch (error) {
       console.log('Error on the API call', error);
     }
@@ -60,9 +68,9 @@ class LeafLetMap extends Component {
 
   render() {
     const bounds = [
-      [11.305553,77.839714],
-      [14.120595,77.387081]
-    ]
+      [11.305553, 77.839714],
+      [14.120595, 77.387081]
+    ];
     return (
       <>
         <MapContainer
@@ -87,18 +95,22 @@ class LeafLetMap extends Component {
             keepAtCenter={false}
             icon={this.customIcon(this.state.iconData)}
             rotationOrigin="center"
-            rotationAngle={this.state.iconData && this.state.iconData.heading ? this.state.iconData.heading : 0}
+            rotationAngle={this.state.heading}
           >
             <Popup>
-              Vehicle ID :{' '}
-              {this.state.iconData !== null ? this.state.iconData.id : 'null'}
-              <br />
               Register Number :
               {this.state.iconData !== null
                 ? this.state.iconData.reg_no
                 : 'null'}
+              <br />
+              Latitude : {' '}
+              {this.state.iconData !== null ? this.state.iconData.lat + " " : 'null '}
+              Longitude : {' '}
+              {this.state.iconData !== null ? this.state.iconData.lon : 'null'}
+              <br/>
+              Speed : {this.state.iconData !==null? this.state.iconData.speed : "null"}
             </Popup>
-          </ReactLeafletDriftMarker>          
+          </ReactLeafletDriftMarker>
         </MapContainer>
       </>
     );

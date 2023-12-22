@@ -33,9 +33,40 @@
 .notification-counter {
   position: relative;
   vertical-align: top;
-  /* z-index: 10; */
   margin-right: 6px;
   font-size: smaller;
+}
+
+.notification-dropdown-menu::after{
+right: 42px !important;
+}
+
+/* navbar content height and width fixed */
+
+/* Navbar icon for hover */
+.dashboard-fix{
+  height: 30px;
+  width: 100px;
+}
+
+.nav-item .dashboard-icon{
+  display: none;
+  height: 40px;
+  width: 35px;
+}
+.dashboard-image{
+  height: 40px;
+  width: 40px;
+  margin: auto;
+}
+.nav-item:hover .dashboard-text{
+  display: none;
+}
+
+.nav-item:hover .dashboard-icon{
+  display: inline-block;
+  animation:  3s ease-in smooth;
+  animation-delay: 3s;
 }
 
 /* Loading animation */

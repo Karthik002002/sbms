@@ -1,14 +1,47 @@
-import React from "react";
-import { Marker as LeafletMarker } from "leaflet";
-import { LeafletProvider } from "@react-leaflet/core";
-import "leaflet-rotatedmarker";
-import { MapContainer,withLeaflet } from "react-leaflet";
+import React from 'react';
+import { Marker as LeafletMarker } from 'leaflet';
+import { LeafletProvider } from '@react-leaflet/core';
+import 'leaflet-rotatedmarker';
+import { MapContainer, withLeaflet } from 'react-leaflet';
 
 class RotatedMarker extends React.Component {
   static defaultProps = {
-    rotationOrigin: "center"
+    rotationOrigin: 'center'
   };
+  componentDidUpdate(prevProps) {
+    const {
+      position,
+      icon,
+      zIndexOffset,
+      opacity,
+      draggable,
+      rotationAngle,
+      rotationOrigin
+    } = this.props;
+    const {
+      position: prevPosition,
+      icon: prevIcon,
+      zIndexOffset: prevZIndexOffset,
+      opacity: prevOpacity,
+      draggable: prevDraggable,
+      rotationAngle: prevRotationAngle,
+      rotationOrigin: prevRotationOrigin
+    } = prevProps;
 
+    if (this.leafletElement) {
+      if (
+        position !== prevPosition ||
+        icon !== prevIcon ||
+        zIndexOffset !== prevZIndexOffset ||
+        opacity !== prevOpacity ||
+        draggable !== prevDraggable ||
+        rotationAngle !== prevRotationAngle ||
+        rotationOrigin !== prevRotationOrigin
+      ) {
+        this.updateLeafletElement(prevProps, this.props);
+      }
+    }
+  }
   createLeafletElement(props) {
     const el = new LeafletMarker(props.position, this.getOptions(props));
     this.contextValue = { ...props.leaflet, popupContainer: el };
